@@ -1,0 +1,33 @@
+import { SectionHeading } from "../../components/SectionHeading";
+import { achievements } from "../../data/achievements";
+
+export function Achievements() {
+  return (
+    <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+      <SectionHeading
+        eyebrow="Về HANS"
+        title="Thành tích khen thưởng"
+        description="Những ghi nhận là động lực để HANS tiếp tục hành trình lan tỏa yêu thương."
+      />
+
+      <div className="grid gap-6 sm:grid-cols-2">
+        {achievements.map((a) => (
+          <div
+            key={a.title}
+            className="flex gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-ink-100 transition hover:-translate-y-1 hover:shadow-md"
+          >
+            <div className="flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-2xl bg-accent-100 text-accent-600">
+              <span className="text-lg">🏆</span>
+              <span className="text-[11px] font-bold">{a.year}</span>
+            </div>
+            <div>
+              <p className="font-display font-bold text-ink-900">{a.title}</p>
+              <p className="mb-2 text-sm font-medium text-brand-600">{a.issuer}</p>
+              <p className="text-sm leading-relaxed text-ink-500">{a.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

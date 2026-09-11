@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Baloo 2", "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+
+  /* Pastel green — primary brand & CTA color */
+  --color-brand-50: #f2fbf6;
+  --color-brand-100: #e2f7ea;
+  --color-brand-200: #c3edd3;
+  --color-brand-300: #97dfb2;
+  --color-brand-400: #66cc8c;
+  --color-brand-500: #3fb96d;
+  --color-brand-600: #2f9e5a;
+  --color-brand-700: #257d47;
+  --color-brand-800: #1f6339;
+  --color-brand-900: #1a5130;
+
+  /* Pastel red — sparing accent, inspired by the logo */
+  --color-accent-50: #fef4f2;
+  --color-accent-100: #fce4df;
+  --color-accent-200: #f8c7bd;
+  --color-accent-300: #f2a294;
+  --color-accent-400: #ea7a67;
+  --color-accent-500: #de5a44;
+  --color-accent-600: #c14631;
+
+  /* Warm neutral text/background scale */
+  --color-ink-50: #f8faf8;
+  --color-ink-100: #f0f3f0;
+  --color-ink-200: #dfe5e0;
+  --color-ink-300: #c3ccc5;
+  --color-ink-400: #96a399;
+  --color-ink-500: #6d7a70;
+  --color-ink-600: #4f5b52;
+  --color-ink-700: #3a453d;
+  --color-ink-800: #262e29;
+  --color-ink-900: #171d19;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-ink-50);
+  color: var(--color-ink-800);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background-color: var(--color-brand-200);
+  color: var(--color-brand-900);
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+}
