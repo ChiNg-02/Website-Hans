@@ -4,7 +4,7 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import { getActivityBySlug } from "../../data/activities";
 import type { DonateMoneyMode } from "../../types/activity";
 import { CoverArt } from "../../components/CoverArt";
-import { getDonationId, submitDonationRecord } from "../../lib/donationApi";
+import { generateDonationId, submitDonationRecord } from "../../lib/donationApi";
 import { buildVietQrUrl } from "../../lib/vietqr";
 
 const inputClass =
@@ -83,7 +83,6 @@ export function DonateMoney() {
   const [step, setStep] = useState<1 | 2>(1);
   const [form, setForm] = useState<FormState>(initialForm);
   const [donationId, setDonationId] = useState<string | null>(null);
-  const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [confirming, setConfirming] = useState(false);
   const [confirmError, setConfirmError] = useState("");
@@ -96,7 +95,13 @@ export function DonateMoney() {
 
   const amountNumber = Number(form.amount) || 0;
 
-  async function handleSubmitStep1(e: FormEvent) {
+  /**
+   * Step 1 only validates and stashes the donor's input in state — it must
+   * never touch the network. The DONATE code is assigned locally so it can
+   * be shown as the transfer content in Step 2; the one and only API call
+   * for this donation happens later, in handleConfirm.
+   */
+  function handleSubmitStep1(e: FormEvent) {
     e.preventDefault();
     setError("");
     if (!form.name.trim() || !form.email.trim() || amountNumber < 1000) {
@@ -104,38 +109,17 @@ export function DonateMoney() {
       return;
     }
 
-    if (donationId) {
-      // Coming back from step 2 — reuse the same code, don't reserve a new one.
-      setQrFailed(false);
-      setStep(2);
-      return;
-    }
-
-    setSubmitting(true);
-    try {
-      const id = await getDonationId();
-      await submitDonationRecord({
-        activitySlug: activity!.slug,
-        activityTitle: activity!.title,
-        name: form.anonymous ? "Ẩn danh" : form.name.trim(),
-        email: form.email.trim(),
-        amount: amountNumber,
-        message: form.message.trim(),
-        anonymous: form.anonymous,
-        transferCode: id,
-        createdAt: new Date().toISOString(),
-      });
-      setDonationId(id);
-      setStep(2);
-    } catch {
-      setError("Chưa thể tạo mã quyên góp. Vui lòng thử lại.");
-    } finally {
-      setSubmitting(false);
-    }
+    // Reuse the existing code if the donor is coming back from step 2 —
+    // never assign a new one for the same pass through the form.
+    setDonationId((existing) => existing ?? generateDonationId());
+    setQrFailed(false);
+    setStep(2);
   }
 
   async function handleConfirm() {
-    if (!donationId) return;
+    // Guards against duplicate submissions from a double click or the
+    // button re-firing before its disabled state has re-rendered.
+    if (!donationId || confirming || confirmed) return;
     setConfirmError("");
     setConfirming(true);
     try {
@@ -269,10 +253,9 @@ export function DonateMoney() {
 
               <button
                 type="submit"
-                disabled={submitting}
-                className="mt-1 self-start rounded-full bg-brand-500 px-6 py-2.5 text-sm font-bold text-white transition hover:bg-brand-600 disabled:cursor-wait disabled:opacity-60"
+                className="mt-1 self-start rounded-full bg-brand-500 px-6 py-2.5 text-sm font-bold text-white transition hover:bg-brand-600"
               >
-                {submitting ? "Đang tạo mã quyên góp..." : "Tiếp tục để nhận thông tin chuyển khoản"}
+                Tiếp tục để nhận thông tin chuyển khoản
               </button>
             </form>
           )}
