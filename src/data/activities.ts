@@ -37,8 +37,7 @@ export const activities: Activity[] = [
         accountNumber: "0071000123456",
         accountHolder: "CLB THIEN NGUYEN HOI AM NHAN SINH",
         branch: "Chi nhánh Hà Nội",
-        transferNote: "TrungThu2026 - Ho ten - SDT",
-        qrImage: "",
+        note: "Toàn bộ kinh phí được dùng để mua lồng đèn, bánh kẹo và học bổng cho các em.",
       },
     ],
   },
@@ -162,7 +161,7 @@ export const activities: Activity[] = [
         bankName: "Techcombank",
         accountNumber: "19036789012345",
         accountHolder: "CLB THIEN NGUYEN HOI AM NHAN SINH",
-        transferNote: "SachChoEm - Ho ten - SDT",
+        note: "Kinh phí dùng để mua sắm giá sách và bảo trì tủ sách định kỳ.",
       },
       {
         type: "donate_goods",

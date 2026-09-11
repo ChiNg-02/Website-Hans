@@ -13,8 +13,8 @@ export interface DonateMoneyMode {
   accountNumber: string;
   accountHolder: string;
   branch?: string;
-  transferNote: string;
-  qrImage?: string;
+  /** Optional guidance shown alongside the transfer info, e.g. what the funds are used for. */
+  note?: string;
 }
 
 export interface DonateGoodsMode {
