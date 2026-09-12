@@ -13,7 +13,7 @@ export const activities: Activity[] = [
       "HANS cần tình nguyện viên đồng hành trong khâu chuẩn bị, di chuyển và tổ chức chương trình, đồng thời kêu gọi ủng hộ kinh phí để mua lồng đèn, bánh kẹo và học bổng.",
     ],
     coverGradient: ["#ffd9d4", "#3fb96d"],
-    status: "upcoming",
+    status: "ongoing",
     featured: true,
     startDate: "2026-09-25",
     endDate: "2026-09-27",
@@ -44,11 +44,11 @@ export const activities: Activity[] = [
   {
     id: "cu-voi-ban-quy-voi-em",
     slug: "cu-voi-ban-quy-voi-em",
-    title: "Cũ Với Bạn - Quý Với Em",
+    title: "Cũ Với Bạn – Quý Với Em",
     summary:
       "Quyên góp sách vở, quần áo, đồ dùng học tập cũ còn sử dụng tốt cho trẻ em khó khăn.",
     description: [
-      "\"Cũ Với Bạn - Quý Với Em\" là dự án thu gom hiện vật đã qua sử dụng nhưng còn giá trị: sách giáo khoa, truyện thiếu nhi, quần áo, cặp sách, đồ dùng học tập.",
+      "\"Cũ Với Bạn – Quý Với Em\" là dự án thu gom hiện vật đã qua sử dụng nhưng còn giá trị: sách giáo khoa, truyện thiếu nhi, quần áo, cặp sách, đồ dùng học tập.",
       "Toàn bộ hiện vật sau khi được phân loại, làm sạch sẽ được chuyển đến các em nhỏ tại vùng khó khăn thông qua mạng lưới điểm trường đối tác của HANS.",
       "Đây là dự án chỉ nhận ủng hộ hiện vật, không tổ chức đăng ký tình nguyện viên trực tiếp cho hoạt động thu gom.",
     ],
