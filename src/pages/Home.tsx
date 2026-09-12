@@ -1,14 +1,91 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { SectionHeading } from "../components/SectionHeading";
 import { ActivityCard } from "../components/ActivityCard";
+import { Carousel } from "../components/Carousel";
+import { useInView } from "../lib/useInView";
 import { getFeaturedActivities } from "../data/activities";
 import { homeStats, homeStatsPeriod } from "../data/stats";
+import type { StatItem } from "../data/stats";
 import { achievements } from "../data/achievements";
+import type { Achievement } from "../data/achievements";
+
+function StatFigure({ stat, index, inView }: { stat: StatItem; index: number; inView: boolean }) {
+  return (
+    <div
+      className={`flex flex-col items-center gap-2.5 px-5 py-7 text-center transition-all duration-700 ease-out sm:px-6 ${
+        inView ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+      }`}
+      style={{ transitionDelay: inView ? `${index * 80}ms` : "0ms" }}
+    >
+      <p className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+        {stat.prefix && (
+          <span className="mr-1.5 align-middle text-sm font-bold uppercase tracking-wide text-brand-300">
+            {stat.prefix}
+          </span>
+        )}
+        {stat.value}
+      </p>
+      <span className="h-0.5 w-8 rounded-full bg-brand-400" />
+      <p className="max-w-[11rem] text-xs leading-snug text-brand-100/90 sm:text-sm">{stat.label}</p>
+    </div>
+  );
+}
+
+function StatsDashboard() {
+  const { ref, inView } = useInView<HTMLDivElement>();
+  return (
+    <section className="relative overflow-hidden py-14 sm:py-16">
+      <div className="absolute inset-0">
+        <img
+          src="/stats-bg.jpg"
+          alt="Đoàn tình nguyện viên HANS trao quà cho trẻ em vùng cao"
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-900/93 via-ink-900/90 to-brand-900/95" />
+      </div>
+      <div ref={ref} className="relative mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="mb-10 flex flex-col items-center gap-3 text-center sm:mb-12">
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-brand-300">
+            Hành trình HANS
+          </span>
+          <h2 className="font-display text-2xl font-extrabold text-white sm:text-3xl">
+            Những con số biết nói
+          </h2>
+          <p className="text-sm text-brand-100/80">{homeStatsPeriod}</p>
+        </div>
+
+        <div className="grid grid-cols-2 divide-x divide-y divide-white/10 border border-white/10 sm:grid-cols-4">
+          {homeStats.map((stat, i) => (
+            <StatFigure key={stat.label} stat={stat} index={i} inView={inView} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AchievementSlide({ achievement }: { achievement: Achievement }) {
+  return (
+    <div className="flex min-h-[300px] w-[280px] flex-col gap-4 rounded-3xl bg-white p-6 shadow-lg ring-1 ring-ink-100 sm:w-[320px]">
+      <div className="flex h-24 flex-col items-center justify-center gap-1 rounded-2xl border-2 border-dashed border-accent-200 bg-accent-50 text-accent-400">
+        <span className="text-2xl">🏅</span>
+        <span className="text-[11px] font-medium">Ảnh giấy khen sẽ được cập nhật</span>
+      </div>
+      <p className="font-display text-base font-bold leading-snug text-ink-900">
+        {achievement.issuer}
+      </p>
+      <p className="text-sm leading-relaxed text-ink-500">{achievement.description}</p>
+    </div>
+  );
+}
 
 export function Home() {
   const featured = getFeaturedActivities();
   const ongoing = featured.filter((a) => a.status === "ongoing");
   const upcoming = featured.filter((a) => a.status === "upcoming");
+  const [activityTab, setActivityTab] = useState<"ongoing" | "upcoming">("ongoing");
+  const activeList = activityTab === "ongoing" ? ongoing : upcoming;
 
   return (
     <div>
@@ -67,76 +144,48 @@ export function Home() {
           </Link>
         </div>
 
-        <div className="flex flex-col gap-10">
-          <div>
-            <h3 className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-brand-700">
-              <span className="h-2 w-2 rounded-full bg-brand-500" />
-              Đang diễn ra
-            </h3>
-            {ongoing.length === 0 ? (
-              <p className="rounded-2xl bg-white p-6 text-sm text-ink-400 ring-1 ring-ink-100">
-                Tạm thời chưa có hoạt động.
-              </p>
-            ) : (
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {ongoing.map((activity) => (
-                  <ActivityCard key={activity.id} activity={activity} />
-                ))}
-              </div>
-            )}
-          </div>
+        <div className="mb-6 inline-flex gap-1 rounded-full bg-ink-100 p-1">
+          <button
+            type="button"
+            onClick={() => setActivityTab("ongoing")}
+            className={`rounded-full px-5 py-2 text-sm font-bold transition ${
+              activityTab === "ongoing"
+                ? "bg-ink-900 text-white shadow-sm"
+                : "text-ink-600 hover:text-ink-800"
+            }`}
+          >
+            Đang diễn ra
+          </button>
+          <button
+            type="button"
+            onClick={() => setActivityTab("upcoming")}
+            className={`rounded-full px-5 py-2 text-sm font-bold transition ${
+              activityTab === "upcoming"
+                ? "bg-ink-900 text-white shadow-sm"
+                : "text-ink-600 hover:text-ink-800"
+            }`}
+          >
+            Sắp diễn ra
+          </button>
+        </div>
 
-          <div>
-            <h3 className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-accent-500">
-              <span className="h-2 w-2 rounded-full bg-accent-400" />
-              Sắp diễn ra
-            </h3>
-            {upcoming.length === 0 ? (
-              <p className="rounded-2xl bg-white p-6 text-sm text-ink-400 ring-1 ring-ink-100">
-                Tạm thời chưa có hoạt động.
-              </p>
-            ) : (
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {upcoming.map((activity) => (
-                  <ActivityCard key={activity.id} activity={activity} />
-                ))}
-              </div>
-            )}
-          </div>
+        <div key={activityTab} className="animate-[fadeIn_0.3s_ease-out]">
+          {activeList.length === 0 ? (
+            <p className="rounded-2xl bg-white p-6 text-sm text-ink-400 ring-1 ring-ink-100">
+              Tạm thời chưa có hoạt động.
+            </p>
+          ) : (
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {activeList.map((activity) => (
+                <ActivityCard key={activity.id} activity={activity} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
       {/* Những con số biết nói */}
-      <section className="bg-brand-900 py-16">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <SectionHeading
-            eyebrow="Hành trình HANS"
-            title="Những con số biết nói"
-            description={homeStatsPeriod}
-            align="center"
-            tone="light"
-          />
-          <div className="grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-4">
-            {homeStats.map((stat) => (
-              <div
-                key={stat.label}
-                className="flex flex-col items-center gap-2 rounded-2xl bg-white/10 px-4 py-6 text-center ring-1 ring-white/10 backdrop-blur transition hover:-translate-y-1 hover:bg-white/15"
-              >
-                <span className="text-3xl">{stat.icon}</span>
-                <p className="font-display text-2xl font-extrabold text-white sm:text-3xl">
-                  {stat.prefix && (
-                    <span className="mr-1 align-middle text-base font-bold text-brand-200">
-                      {stat.prefix}
-                    </span>
-                  )}
-                  {stat.value}
-                </p>
-                <p className="text-xs leading-snug text-brand-100 sm:text-sm">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <StatsDashboard />
 
       {/* Những dấu ấn đáng tự hào */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
@@ -153,20 +202,11 @@ export function Home() {
             Xem tất cả →
           </Link>
         </div>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <Carousel tone="light">
           {achievements.map((a) => (
-            <div
-              key={a.issuer + a.description}
-              className="flex flex-col gap-3 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-ink-100 transition hover:-translate-y-1 hover:shadow-md"
-            >
-              <div className="flex h-16 items-center justify-center rounded-xl border-2 border-dashed border-accent-200 bg-accent-50 text-2xl text-accent-400">
-                🏅
-              </div>
-              <p className="font-display text-sm font-bold text-ink-900">{a.issuer}</p>
-              <p className="text-sm leading-relaxed text-ink-500">{a.description}</p>
-            </div>
+            <AchievementSlide key={a.issuer + a.description} achievement={a} />
           ))}
-        </div>
+        </Carousel>
       </section>
     </div>
   );

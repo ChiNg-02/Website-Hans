@@ -49,13 +49,15 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-black/10 bg-brand-900">
+    <header className="sticky top-0 z-40 border-b border-ink-100 bg-white/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-2.5 sm:px-6">
         <Link to="/" className="flex shrink-0 items-center gap-3">
           <img src="/logo.png" alt="Logo HANS" className="h-14 w-14 object-contain sm:h-16 sm:w-16" />
           <span className="flex flex-col leading-tight">
-            <span className="font-display text-lg font-extrabold text-white sm:text-xl">Hơi Ấm</span>
-            <span className="text-xs font-normal text-brand-200 sm:text-sm">Nhân Sinh</span>
+            <span className="font-display text-lg font-extrabold text-brand-800 sm:text-xl">
+              Hơi Ấm
+            </span>
+            <span className="text-xs font-normal text-brand-500 sm:text-sm">Nhân Sinh</span>
           </span>
         </Link>
 
@@ -63,7 +65,7 @@ export function Header() {
           {NAV_LINKS.map((link) =>
             link.kind === "group" ? (
               <div key={link.label} className="group relative">
-                <button className="flex items-center gap-1 rounded-full px-3 py-2 text-sm font-bold text-white transition hover:bg-white/10 hover:text-brand-100">
+                <button className="flex items-center gap-1 rounded-full px-3 py-2 text-sm font-bold text-ink-700 transition hover:bg-brand-50 hover:text-brand-700">
                   {link.label}
                   <span className="text-xs">▾</span>
                 </button>
@@ -94,8 +96,8 @@ export function Header() {
                 className={({ isActive }) =>
                   `rounded-full px-3 py-2 text-sm font-bold transition ${
                     isActive && link.to === "/hoat-dong"
-                      ? "bg-white/15 text-white"
-                      : "text-white hover:bg-white/10 hover:text-brand-100"
+                      ? "bg-brand-50 text-brand-700"
+                      : "text-ink-700 hover:bg-brand-50 hover:text-brand-700"
                   }`
                 }
               >
@@ -112,19 +114,19 @@ export function Header() {
               onChange={(e) => setQuery(e.target.value)}
               type="search"
               placeholder="Tìm kiếm..."
-              className="w-40 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white placeholder-white/60 outline-none transition focus:w-56 focus:border-white/40 focus:bg-white focus:text-ink-700 focus:placeholder-ink-400"
+              className="w-40 rounded-full border border-ink-200 bg-ink-50 px-4 py-2 text-sm text-ink-700 outline-none transition focus:w-56 focus:border-brand-300 focus:bg-white"
             />
           </form>
           <Link
             to="/hoat-dong"
-            className="hidden rounded-full bg-white px-4 py-2 text-sm font-bold text-brand-700 shadow-sm transition hover:bg-brand-50 sm:inline-flex"
+            className="hidden rounded-full bg-brand-500 px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-brand-600 sm:inline-flex"
           >
             Đồng hành ngay
           </Link>
           <button
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Mở menu"
-            className="flex h-10 w-10 items-center justify-center rounded-full text-white hover:bg-white/10 lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full text-brand-700 hover:bg-brand-50 lg:hidden"
           >
             {mobileOpen ? "✕" : "☰"}
           </button>

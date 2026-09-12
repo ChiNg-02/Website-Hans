@@ -46,7 +46,6 @@ export function Modal({ open, onClose, title, icon, children }: ModalProps) {
         <div className="overflow-y-auto px-6 py-5">{children}</div>
       </div>
       <style>{`
-        @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(16px) } to { opacity: 1; transform: translateY(0) } }
       `}</style>
     </div>
