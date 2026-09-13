@@ -25,7 +25,7 @@ const NAV_LINKS: (NavLeaf | NavGroup)[] = [
       { to: "/ve-hans/thanh-tich", label: "Thành tích khen thưởng" },
     ],
   },
-  { kind: "leaf", to: "/hoat-dong?filter=featured", label: "Dự án/Hoạt động nổi bật" },
+  { kind: "leaf", to: "/du-an-noi-bat", label: "Dự án/Hoạt động nổi bật" },
   { kind: "leaf", to: "/hoat-dong", label: "Đồng hành cùng HANS" },
   { kind: "leaf", to: "/lien-he", label: "Liên hệ" },
 ];
