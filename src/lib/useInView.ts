@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-/** Tracks whether an element has scrolled into view, once — used to trigger reveal animations. */
+/** Tracks whether an element has scrolled into view, once - used to trigger reveal animations. */
 export function useInView<T extends HTMLElement>(options?: IntersectionObserverInit) {
   const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);

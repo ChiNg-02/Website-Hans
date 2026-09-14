@@ -7,11 +7,11 @@ import { VolunteerFormPanel } from "./VolunteerFormPanel";
 import { DonateGoodsPanel } from "./DonateGoodsPanel";
 
 /**
- * Renders exactly one CTA per engagement mode the activity declares — nothing
+ * Renders exactly one CTA per engagement mode the activity declares - nothing
  * more, nothing less. Adding a new activity only means adding entries to its
  * `engagementModes` array; this component never needs to change.
  *
- * "donate_money" is the one mode that opens a full page instead of a modal —
+ * "donate_money" is the one mode that opens a full page instead of a modal -
  * it's a multi-step flow (donor info → payment) that needs its own URL.
  */
 export function EngagementCTA({ activity }: { activity: Activity }) {

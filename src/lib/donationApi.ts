@@ -17,9 +17,9 @@ export interface DonationRecord {
 
 /**
  * The one and only point where a donation is written to the club's Google
- * Sheet — called exactly once per donation, when the donor confirms they've
+ * Sheet - called exactly once per donation, when the donor confirms they've
  * transferred the money. The endpoint only accepts no-cors requests, so the
- * response is opaque — a resolved promise only means the request went out,
+ * response is opaque - a resolved promise only means the request went out,
  * not that the sheet accepted it.
  */
 export async function submitDonationRecord(data: DonationRecord): Promise<void> {
@@ -33,8 +33,8 @@ export async function submitDonationRecord(data: DonationRecord): Promise<void> 
 
 /**
  * Assigns the DONATE1, DONATE2, ... transfer code shown in Step 2. This must
- * not touch the network — Step 1 only collects and validates form input, it
- * never calls the API — so the code is a sequential, per-browser counter.
+ * not touch the network - Step 1 only collects and validates form input, it
+ * never calls the API - so the code is a sequential, per-browser counter.
  */
 export function generateDonationId(): string {
   const storageKey = "hans-donate-counter";

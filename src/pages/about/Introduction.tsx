@@ -2,13 +2,6 @@ import { SectionHeading } from "../../components/SectionHeading";
 
 const REGIONS = ["Long Thành", "Biên Hòa", "Sài Gòn"];
 
-const VALUES = [
-  { title: "Tử tế", desc: "Hành động xuất phát từ sự chân thành và thấu hiểu." },
-  { title: "Đồng hành", desc: "Không ai đơn độc trên hành trình lan tỏa yêu thương." },
-  { title: "Bền vững", desc: "Mỗi dự án hướng tới giá trị lâu dài cho cộng đồng." },
-  { title: "Trẻ trung", desc: "Sáng tạo, năng động và luôn đổi mới cách làm thiện nguyện." },
-];
-
 interface OrgMember {
   initials: string;
   name: string;
@@ -38,7 +31,7 @@ const EDGE_INSET = `calc((100% - ${2 * GAP_PX}px) / 6)`;
 /**
  * The connector between a parent card and the 3-across row beneath it: a
  * trunk down from the parent, a horizontal bar spanning the exact centers of
- * the first and last card, and a drop to each of the 3 cards — all computed
+ * the first and last card, and a drop to each of the 3 cards - all computed
  * with the same gap the card grid uses, so nothing is ever off by the gap.
  * Collapses to one straight line on mobile, where the row stacks to 1 column.
  */
@@ -143,10 +136,10 @@ export function Introduction() {
             <p className="leading-relaxed text-ink-600">
               Ra đời vào ngày 7/7/2019, HANS bắt đầu với một nhóm người trẻ mong muốn đóng góp điều
               gì đó ý nghĩa cho cộng đồng. Đến nay, HANS đã trở thành một tổ chức thiện nguyện với
-              nhiều hoạt động thiện nguyện ý nghĩa.
+              nhiều hoạt động ý nghĩa.
             </p>
             <p className="rounded-2xl bg-brand-50 px-5 py-4 font-medium leading-relaxed text-brand-800">
-              Chúng mình tin rằng thiện nguyện không cần phải to lớn — chỉ cần xuất phát từ sự chân
+              Chúng mình tin rằng thiện nguyện không cần phải to lớn - chỉ cần xuất phát từ sự chân
               thành, mỗi hành động nhỏ đều có thể tạo nên những thay đổi lớn.
             </p>
           </div>
@@ -167,24 +160,6 @@ export function Introduction() {
                   📍
                 </span>
                 <p className="font-display font-bold text-ink-900">{region}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Giá trị cốt lõi */}
-        <div className="mb-20">
-          <h3 className="mb-6 font-display text-xl font-bold text-ink-900 sm:text-2xl">
-            Giá trị cốt lõi
-          </h3>
-          <div className="grid grid-cols-1 divide-y divide-x divide-ink-100 border border-ink-100 sm:grid-cols-2 lg:grid-cols-4">
-            {VALUES.map((v, i) => (
-              <div key={v.title} className="flex flex-col gap-2 p-7">
-                <span className="font-display text-3xl font-extrabold text-brand-200">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <p className="font-display text-lg font-bold text-ink-900">{v.title}</p>
-                <p className="text-sm leading-relaxed text-ink-500">{v.desc}</p>
               </div>
             ))}
           </div>

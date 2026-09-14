@@ -35,7 +35,7 @@ function AnimatedCount({ text, start }: { text: string; start: boolean }) {
 }
 
 /**
- * Pure display — this dashboard is a showcase, not a filter or navigation. No Link, no
+ * Pure display - this dashboard is a showcase, not a filter or navigation. No Link, no
  * hover-lift, no cursor affordance: nothing here should read as clickable.
  */
 function DashboardCard({
@@ -86,13 +86,13 @@ export function FeaturedOverview() {
             Hành trình những dự án mang dấu ấn của HANS
           </h1>
           <p className="mt-4 max-w-xl leading-relaxed text-white/85">
-            Mỗi con số dưới đây là một hành trình bền bỉ — nơi những chuyến đi, bữa ăn và món quà nhỏ đã
+            Mỗi con số dưới đây là một hành trình bền bỉ - nơi những chuyến đi, bữa ăn và món quà nhỏ đã
             cùng nhau viết nên câu chuyện thiện nguyện của HANS.
           </p>
         </div>
       </section>
 
-      {/* Dashboard tổng quan — showcase only, not interactive */}
+      {/* Dashboard tổng quan - showcase only, not interactive */}
       <section className="relative overflow-hidden py-16 sm:py-20">
         <div className="absolute inset-0">
           <img

@@ -109,7 +109,7 @@ export function Home() {
           </h1>
           <p className="max-w-md text-base leading-relaxed text-white/90">
             HANS là nơi những người trẻ cùng chung tay tạo nên các dự án thiện nguyện thiết
-            thực — từ vùng cao xa xôi đến những góc phố quen thuộc.
+            thực - từ vùng cao xa xôi đến những góc phố quen thuộc.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link

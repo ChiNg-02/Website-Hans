@@ -43,7 +43,7 @@ export function QuayMiGoi2K() {
         <SectionHeading
           eyebrow="Hình ảnh"
           title="Không gian quầy mì gói 2K"
-          description="Một bữa ăn ấm bụng, một không gian thoải mái — đúng tinh thần tự phục vụ của quầy."
+          description="Một bữa ăn ấm bụng, một không gian thoải mái - đúng tinh thần tự phục vụ của quầy."
         />
         <div className="mb-14">
           <PhotoGalleryQuad images={GALLERY} alt="Không gian quầy mì gói 2K" />

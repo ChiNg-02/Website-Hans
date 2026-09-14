@@ -96,7 +96,7 @@ export function DonateMoney() {
   const amountNumber = Number(form.amount) || 0;
 
   /**
-   * Step 1 only validates and stashes the donor's input in state — it must
+   * Step 1 only validates and stashes the donor's input in state - it must
    * never touch the network. The DONATE code is assigned locally so it can
    * be shown as the transfer content in Step 2; the one and only API call
    * for this donation happens later, in handleConfirm.
@@ -109,7 +109,7 @@ export function DonateMoney() {
       return;
     }
 
-    // Reuse the existing code if the donor is coming back from step 2 —
+    // Reuse the existing code if the donor is coming back from step 2 -
     // never assign a new one for the same pass through the form.
     setDonationId((existing) => existing ?? generateDonationId());
     setQrFailed(false);
@@ -337,7 +337,7 @@ export function DonateMoney() {
                       disabled={confirming}
                       className="w-full rounded-full bg-brand-500 px-6 py-2.5 text-sm font-bold text-white transition hover:bg-brand-600 disabled:cursor-wait disabled:opacity-60"
                     >
-                      {confirming ? "Đang gửi xác nhận..." : "Tôi đã chuyển khoản — Gửi xác nhận"}
+                      {confirming ? "Đang gửi xác nhận..." : "Tôi đã chuyển khoản - Gửi xác nhận"}
                     </button>
                     <button
                       type="button"

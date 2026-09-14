@@ -26,7 +26,7 @@ export const ENGAGEMENT_STYLE: Record<EngagementMode["type"], string> = {
 
 /**
  * When an activity supports both donation modes, the short "Ủng hộ" label
- * becomes ambiguous — disambiguate only in that case so single-mode
+ * becomes ambiguous - disambiguate only in that case so single-mode
  * activities keep the terse label used in the spec's examples.
  */
 export function labelForMode(mode: EngagementMode, allModes: EngagementMode[]): string {

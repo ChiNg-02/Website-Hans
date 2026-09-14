@@ -4,7 +4,7 @@ export interface StatItem {
   prefix?: string;
 }
 
-/** The reporting period these numbers cover — shown alongside the stats section. */
+/** The reporting period these numbers cover - shown alongside the stats section. */
 export const homeStatsPeriod = "Từ tháng 07-2019 đến 12-2025";
 
 export const homeStats: StatItem[] = [

@@ -19,7 +19,7 @@ export function Footer() {
             </span>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-ink-500">
-            CLB thiện nguyện HANS lan tỏa yêu thương qua từng dự án nhỏ — vì một cộng đồng ấm áp
+            CLB thiện nguyện HANS lan tỏa yêu thương qua từng dự án nhỏ - vì một cộng đồng ấm áp
             và gắn kết hơn mỗi ngày.
           </p>
           <div className="mt-4 flex items-center gap-2">

@@ -36,7 +36,7 @@ export function TrungThuVungCao() {
                 Trung Thu Vùng Cao 2026
               </h2>
               <p className="mt-1 max-w-md text-sm text-white/90 sm:text-base">
-                Mùa trăng rằm thứ 7 đang được HANS chuẩn bị — cùng đồng hành để mang Trung Thu đến
+                Mùa trăng rằm thứ 8 đang được HANS chuẩn bị - cùng đồng hành để mang Trung Thu đến
                 với các em nhỏ vùng cao.
               </p>
             </div>
