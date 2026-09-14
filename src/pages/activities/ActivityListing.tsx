@@ -8,18 +8,15 @@ import type { ActivityStatus } from "../../types/activity";
 type FilterKey = "all" | "featured" | ActivityStatus;
 
 const FILTERS: { key: FilterKey; label: string }[] = [
-  { key: "all", label: "Tất cả" },
-  { key: "featured", label: "Nổi bật" },
-  { key: "upcoming", label: "Sắp diễn ra" },
   { key: "ongoing", label: "Đang diễn ra" },
-  { key: "past", label: "Đã hoàn thành" },
+  { key: "upcoming", label: "Sắp diễn ra" },
 ];
 
 export function ActivityListing() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const filterParam = (searchParams.get("filter") as FilterKey) ?? "all";
+  const filterParam = (searchParams.get("filter") as FilterKey) ?? "ongoing";
   const [filter, setFilter] = useState<FilterKey>(
-    FILTERS.some((f) => f.key === filterParam) ? filterParam : "all",
+    FILTERS.some((f) => f.key === filterParam) ? filterParam : "ongoing",
   );
 
   const filtered = useMemo(() => {
@@ -37,7 +34,7 @@ export function ActivityListing() {
     <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
       <SectionHeading
         eyebrow="Đồng hành cùng HANS"
-        title="Danh sách hoạt động"
+        title="Hoạt động sắp/đang diễn ra"
         description="Mỗi hoạt động là một cách khác nhau để bạn góp phần lan tỏa hơi ấm. Chọn một dự án để xem chi tiết và cách đồng hành phù hợp với bạn."
       />
 
