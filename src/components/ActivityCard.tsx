@@ -10,7 +10,11 @@ export function ActivityCard({ activity }: { activity: Activity }) {
       to={`/hoat-dong/${activity.slug}`}
       className="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-ink-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:ring-brand-200"
     >
-      <CoverArt gradient={activity.coverGradient} className="h-40 shrink-0">
+      <CoverArt
+        gradient={activity.coverGradient}
+        image={activity.coverImage}
+        className="h-40 shrink-0"
+      >
         <div className="absolute left-4 top-4">
           <StatusBadge status={activity.status} />
         </div>

@@ -13,6 +13,7 @@ export const activities: Activity[] = [
       "HANS cần tình nguyện viên đồng hành trong khâu chuẩn bị, di chuyển và tổ chức chương trình, đồng thời kêu gọi ủng hộ kinh phí để mua lồng đèn, bánh kẹo.",
     ],
     coverGradient: ["#ffd9d4", "#3fb96d"],
+    coverImage: "/769144644_28199483976406534_1958717036018359643_n.jpeg",
     status: "ongoing",
     featured: true,
     startDate: "2026-09-25",
@@ -21,8 +22,8 @@ export const activities: Activity[] = [
     tags: ["Trung thu", "Vùng cao", "Trẻ em"],
     stats: [
       { label: "em nhỏ vùng cao", value: "386" },
-      { label: "Công trình vui chơi", value: "1" },
-      { label: "Phần quà cho các hộ gia đình có hoàn cảnh đặc biệt khó khăn", value: "20" },
+      { label: "công trình vui chơi", value: "1" },
+      { label: "phần quà cho các hộ gia đình có hoàn cảnh đặc biệt khó khăn", value: "20" },
     ],
     engagementModes: [
       {
@@ -39,6 +40,21 @@ export const activities: Activity[] = [
         branch: "Chi nhánh Hồ Chí Minh",
         note: "Toàn bộ kinh phí được dùng để mua lồng đèn, bánh kẹo và học bổng cho các em.",
       },
+      {
+        type: "donate_goods",
+        acceptedItems: [
+          "Lồng đèn Trung Thu còn mới",
+          "Bánh kẹo, sữa và đồ ăn nhẹ còn hạn sử dụng",
+          "Đồ dùng học tập và quà tặng cho trẻ em",
+        ],
+        dropOffLocations: [
+          "Long Thành - 0979902678 (Như)",
+          "Biên Hoà - 0939710728 (Chị Phương Vy)",
+          "Sài Gòn - 0931674603 (Chị Nhuận Hiếu)",
+        ],
+        guideline:
+          "Vui lòng gửi hiện vật còn mới, sạch và còn hạn sử dụng. HANS sẽ phân loại và chuyển đến các em nhỏ tại Gia Lai.",
+      },
     ],
   },
   {
@@ -48,19 +64,18 @@ export const activities: Activity[] = [
     summary:
       "Quyên góp gấu bông cũ còn sử dụng tốt cho trẻ em khó khăn.",
     description: [
-      "\"Cũ Với Bạn – Quý Với Em\" là dự án thu gom hiện vật đã qua sử dụng nhưng còn giá trị: sách giáo khoa, truyện thiếu nhi, quần áo, cặp sách, đồ dùng học tập.",
+      "\"Cũ Với Bạn – Quý Với Em\" là dự án thu gom hiện vật đã qua sử dụng nhưng còn giá trị: gấu bông.",
       "Toàn bộ hiện vật sau khi được phân loại, làm sạch sẽ được chuyển đến các em nhỏ tại vùng khó khăn thông qua mạng lưới điểm trường đối tác của HANS.",
     ],
     coverGradient: ["#c3edd3", "#f2a294"],
+    coverImage: "/775825135_1667373812061029_2963839198355845022_n.jpeg",
     status: "ongoing",
     featured: true,
-    startDate: "2026-08-01",
-    endDate: "2026-10-31",
-    location: "Điểm thu gom tại Hà Nội, Đà Nẵng, TP.HCM",
-    tags: ["Hiện vật", "Sách vở", "Quần áo"],
+    startDate: "2026-08-17",
+    endDate: "2026-09-18",
+    location: "Điểm thu gom tại 70 Lê Thánh Tông, Phường Long Thành, Thành phố Đồng Nai",
+    tags: ["Hiện vật", "Thú nhồi bông", "Trung thu"],
     stats: [
-      { label: "Hiện vật đã nhận", value: "3.200" },
-      { label: "Điểm thu gom", value: "6" },
     ],
     engagementModes: [
       {
@@ -71,40 +86,14 @@ export const activities: Activity[] = [
           "Cặp sách, đồ dùng học tập",
         ],
         dropOffLocations: [
-          "Văn phòng HANS Hà Nội - 12 Nguyễn Trãi, Thanh Xuân",
-          "Văn phòng HANS Đà Nẵng - 45 Nguyễn Văn Linh, Hải Châu",
-          "Văn phòng HANS TP.HCM - 88 Cách Mạng Tháng 8, Quận 3",
+          "Long Thành - 0979902678 (Như)",
+          "Biên Hoà - 0939710728 (Chị Phương Vy)",
+          "Sài Gòn - 0931674603 (Chị Nhuận Hiếu)",
         ],
-        contactPerson: "Ngọc Anh",
-        contactPhone: "0912 345 678",
         guideline:
-          "Vui lòng phân loại và làm sạch hiện vật trước khi gửi. Có thể gửi trực tiếp tại các điểm thu gom hoặc liên hệ để được hỗ trợ thu gom tận nơi với đơn hàng từ 10kg trở lên.",
+          "Vui lòng phân loại và làm sạch hiện vật trước khi gửi. Có thể gửi trực tiếp tại các điểm thu gom ",
       },
     ],
-  },
-  {
-    id: "mua-dong-khong-lanh-2025",
-    slug: "mua-dong-khong-lanh-2025",
-    title: "Mùa Đông Không Lạnh 2025",
-    summary:
-      "Chiến dịch quyên góp áo ấm, chăn màn và tổ chức đêm nhạc gây quỹ cho trẻ em vùng cao mùa đông năm 2025.",
-    description: [
-      "Mùa Đông Không Lạnh 2025 đã khép lại thành công với hơn 1.500 áo ấm và 800 chiếc chăn được trao tận tay các em nhỏ tại Lào Cai và Hà Giang.",
-      "Chương trình kết hợp giữa quyên góp hiện vật, gây quỹ qua đêm nhạc thiện nguyện và đội tình nguyện viên trực tiếp vận chuyển, trao quà tại các điểm trường.",
-    ],
-    coverGradient: ["#66cc8c", "#f2a294"],
-    status: "past",
-    featured: false,
-    startDate: "2025-12-05",
-    endDate: "2025-12-20",
-    location: "Lào Cai & Hà Giang",
-    tags: ["Mùa đông", "Áo ấm", "Gây quỹ"],
-    stats: [
-      { label: "Áo ấm trao tặng", value: "1.500+" },
-      { label: "Chăn ấm trao tặng", value: "800" },
-      { label: "Tình nguyện viên", value: "65" },
-    ],
-    engagementModes: [],
   },
 ];
 

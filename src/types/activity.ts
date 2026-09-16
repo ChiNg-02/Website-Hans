@@ -35,6 +35,7 @@ export interface Activity {
   summary: string;
   description: string[];
   coverGradient: [string, string];
+  coverImage?: string;
   status: ActivityStatus;
   featured?: boolean;
   startDate: string;
