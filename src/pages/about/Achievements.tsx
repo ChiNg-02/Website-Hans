@@ -14,7 +14,7 @@ export function Achievements() {
         {achievements.map((a, index) => (
           <div
             key={a.issuer + a.description}
-            className="flex gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-ink-100 transition hover:-translate-y-1 hover:shadow-md"
+            className="flex h-full gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-ink-100 transition hover:-translate-y-1 hover:shadow-md"
           >
             <div className="h-20 w-24 shrink-0 overflow-hidden rounded-xl bg-ink-100">
               <img
