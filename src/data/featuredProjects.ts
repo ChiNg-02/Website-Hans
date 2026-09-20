@@ -36,9 +36,11 @@ export const featuredProjects: FeaturedProject[] = [
   {
     slug: "bep-an-thien-nguyen",
     title: "Bếp Ăn Thiện Nguyện",
-    countLabel: "79 lần tổ chức",
+    countLabel: "101 lần tổ chức",
     regions: ["Long Thành", "Biên Hòa", "Sài Gòn"],
-    hasDetail: false,
+    summary:
+      "HANS cùng tình nguyện viên chuẩn bị những suất ăn tử tế và trao tận tay người đang cần.",
+    hasDetail: true,
     inDashboard: true,
     coverImage: "/featured/bep-an-thien-nguyen/2.jpg",
     coverGradient: ["#97dfb2", "#66cc8c"],

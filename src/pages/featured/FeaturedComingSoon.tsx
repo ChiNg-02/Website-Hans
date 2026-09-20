@@ -48,6 +48,10 @@ export function FeaturedComingSoon() {
           </div>
         )}
 
+        {project.summary && (
+          <p className="mb-10 max-w-3xl text-base leading-relaxed text-ink-600">{project.summary}</p>
+        )}
+
         <div className="mb-10 rounded-2xl bg-brand-50 px-5 py-4 text-sm leading-relaxed text-brand-700">
           Nội dung chi tiết của hoạt động này đang được HANS cập nhật. Câu chuyện, số liệu và hình ảnh
           đầy đủ sẽ sớm được bổ sung tại đây.
