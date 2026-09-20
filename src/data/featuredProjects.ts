@@ -40,6 +40,7 @@ export const featuredProjects: FeaturedProject[] = [
     regions: ["Long Thành", "Biên Hòa", "Sài Gòn"],
     hasDetail: false,
     inDashboard: true,
+    coverImage: "/featured/bep-an-thien-nguyen/2.jpg",
     coverGradient: ["#97dfb2", "#66cc8c"],
   },
   {
