@@ -11,13 +11,17 @@ export function Achievements() {
       />
 
       <div className="grid gap-6 sm:grid-cols-2">
-        {achievements.map((a) => (
+        {achievements.map((a, index) => (
           <div
             key={a.issuer + a.description}
             className="flex gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-ink-100 transition hover:-translate-y-1 hover:shadow-md"
           >
-            <div className="flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-2xl border-2 border-dashed border-accent-200 bg-accent-50 text-accent-500">
-              <span className="text-xl">🏅</span>
+            <div className="h-20 w-24 shrink-0 overflow-hidden rounded-xl bg-ink-100">
+              <img
+                src={`/achievements/${index + 1}/${String(index + 1).padStart(2, "0")}.jpg`}
+                alt={`Bằng khen: ${a.issuer}`}
+                className="h-full w-full object-cover"
+              />
             </div>
             <div>
               <p className="font-display font-bold text-ink-900">{a.issuer}</p>
