@@ -48,10 +48,14 @@ export const featuredProjects: FeaturedProject[] = [
   {
     slug: "tet-yeu-thuong",
     title: "Tết Yêu Thương",
-    countLabel: "4 lần tổ chức",
+    tagline: "Mang Tết đến với những mảnh đời đang cần",
+    countLabel: "Tổ chức thường niên",
     regions: ["Long Thành", "Biên Hòa", "Sài Gòn"],
+    summary:
+      "Được tổ chức thường niên tại ba điểm cầu Biên Hoà, Long Thành và Sài Gòn, dự án là hành trình mang Tết đến với những người già neo đơn, cô chú lao động nghèo và các em nhỏ khó khăn. Bằng những phần quà thiết thực (mì gói, dầu ăn...) kèm theo một phong bao nhỏ hỗ trợ sắm Tết, HANS hy vọng có thể san sẻ phần nào nỗi lo cơm áo ngày cuối năm, để ai cũng được đón một cái Tết đủ đầy.",
     hasDetail: false,
     inDashboard: true,
+    coverImage: "/t%E1%BA%BFt%20iu%20th%C6%B0%C6%A1ng/%E1%BA%A3nh%20b%C3%ACa/%E1%BA%A3nh%20b%C3%ACa%20t%E1%BA%BFt.jpg",
     coverGradient: ["#fce4df", "#de5a44"],
   },
   {
