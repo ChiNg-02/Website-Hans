@@ -39,7 +39,7 @@ export const featuredProjects: FeaturedProject[] = [
     countLabel: "101 lần tổ chức",
     regions: ["Long Thành", "Biên Hòa", "Sài Gòn"],
     summary:
-      "HANS cùng tình nguyện viên chuẩn bị những suất ăn tử tế và trao tận tay người đang cần.",
+      "\"Bếp Ăn Thiện Nguyện\" là nơi các thành viên HANS cùng đội ngũ tình nguyện viên tự tay chuẩn bị từng bữa ăn. Từ khâu chọn nguyên liệu đến khi nấu nướng, mỗi suất ăn đều được chăm chút cẩn thận. Những phần ăn nóng hổi này được trao trực tiếp đến bất kỳ ai đang gặp khó khăn với một mong muốn giản dị: san sẻ phần nào nỗi lo toan thường nhật bằng một bữa ăn ngon và tươm tất.",
     hasDetail: true,
     inDashboard: true,
     coverImage: "/featured/bep-an-thien-nguyen/2.jpg",
