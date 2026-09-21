@@ -65,17 +65,20 @@ function StatsDashboard() {
   );
 }
 
-function AchievementSlide({ achievement }: { achievement: Achievement }) {
+function AchievementSlide({ achievement, index }: { achievement: Achievement; index: number }) {
   return (
-    <div className="flex min-h-[300px] w-[280px] flex-col gap-4 rounded-3xl bg-white p-6 shadow-lg ring-1 ring-ink-100 sm:w-[320px]">
-      <div className="flex h-24 flex-col items-center justify-center gap-1 rounded-2xl border-2 border-dashed border-accent-200 bg-accent-50 text-accent-400">
-        <span className="text-2xl">🏅</span>
-        <span className="text-[11px] font-medium">Ảnh giấy khen sẽ được cập nhật</span>
+    <div className="flex h-[430px] w-[280px] flex-col gap-4 rounded-3xl bg-white p-6 shadow-lg ring-1 ring-ink-100 sm:h-[450px] sm:w-[320px]">
+      <div className="flex h-52 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-ink-50 p-2 sm:h-60">
+        <img
+          src={`/achievements/${index + 1}/${String(index + 1).padStart(2, "0")}.jpg`}
+          alt={`Bằng khen: ${achievement.issuer}`}
+          className="h-full w-full object-contain"
+        />
       </div>
-      <p className="font-display text-base font-bold leading-snug text-ink-900">
+      <p className="min-h-12 font-display text-base font-bold leading-snug text-ink-900">
         {achievement.issuer}
       </p>
-      <p className="text-sm leading-relaxed text-ink-500">{achievement.description}</p>
+      <p className="line-clamp-3 text-sm leading-relaxed text-ink-500">{achievement.description}</p>
     </div>
   );
 }
@@ -203,8 +206,8 @@ export function Home() {
           </Link>
         </div>
         <Carousel tone="light">
-          {achievements.map((a) => (
-            <AchievementSlide key={a.issuer + a.description} achievement={a} />
+          {achievements.map((a, index) => (
+            <AchievementSlide key={a.issuer + a.description} achievement={a} index={index} />
           ))}
         </Carousel>
       </section>

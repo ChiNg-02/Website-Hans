@@ -18,6 +18,7 @@ export function FeaturedComingSoon() {
         tagline={project.tagline}
         countLabel={project.countLabel}
         gradient={project.coverGradient}
+        image={project.coverImage}
       />
 
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
@@ -45,6 +46,10 @@ export function FeaturedComingSoon() {
               </div>
             ))}
           </div>
+        )}
+
+        {project.summary && (
+          <p className="mb-10 max-w-3xl text-base leading-relaxed text-ink-600">{project.summary}</p>
         )}
 
         <div className="mb-10 rounded-2xl bg-brand-50 px-5 py-4 text-sm leading-relaxed text-brand-700">
