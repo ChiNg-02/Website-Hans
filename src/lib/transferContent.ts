@@ -7,11 +7,24 @@ export function formatDateDDMMYYYY(date: Date): string {
 }
 
 /**
- * Builds the bank transfer content: full name without diacritics/spaces,
- * followed by the confirmation date (DDMMYYYY) and the amount, with no
- * separators - e.g. "NguyenVanA22092026100000".
+ * Builds the bank transfer content shown to a donor.
+ *
+ * - With a project code (e.g. "TTVC"): "Ho Ten khong dau" + " " + code -
+ *   e.g. "NguyenVanA TTVC". Each project can be given its own code via
+ *   DonateMoneyMode.projectCode.
+ * - Without one (default): full name without diacritics/spaces, followed by
+ *   the confirmation date (DDMMYYYY) and the amount, with no separators -
+ *   e.g. "NguyenVanA22092026100000".
  */
-export function buildTransferContent(name: string, amount: number, date: Date): string {
+export function buildTransferContent(
+  name: string,
+  amount: number,
+  date: Date,
+  projectCode?: string,
+): string {
   const namePart = removeDiacritics(name.trim()).replace(/\s+/g, "");
+  if (projectCode) {
+    return `${namePart} ${projectCode}`;
+  }
   return `${namePart}${formatDateDDMMYYYY(date)}${Math.round(amount)}`;
 }

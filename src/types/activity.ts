@@ -15,6 +15,13 @@ export interface DonateMoneyMode {
   branch?: string;
   /** Optional guidance shown alongside the transfer info, e.g. what the funds are used for. */
   note?: string;
+  /**
+   * Optional per-project transfer code (e.g. "TTVC"). When set, the transfer
+   * content shown to donors is "Ho Ten khong dau" + " " + this code, instead
+   * of the default name + date + amount format. Each project can be given
+   * its own code later; omit to keep the default format.
+   */
+  projectCode?: string;
 }
 
 export interface DonateGoodsMode {

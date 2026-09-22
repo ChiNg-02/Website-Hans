@@ -98,12 +98,14 @@ export function DonateMoney() {
 
   /**
    * Step 1 only validates and stashes the donor's input in state - it must
-   * never touch the network. The transfer content is built locally, from the
-   * donor's name, this exact moment's date and the amount, so it can be
-   * shown for the actual bank transfer in Step 2; the one and only API call
-   * for this donation happens later, in handleConfirm. Rebuilding it on every
-   * submit (rather than reusing a stashed value) keeps it in sync if the
-   * donor goes back to step 1 and edits their name or amount.
+   * never touch the network. The transfer content is built locally so it can
+   * be shown for the actual bank transfer in Step 2; the one and only API
+   * call for this donation happens later, in handleConfirm. Rebuilding it on
+   * every submit (rather than reusing a stashed value) keeps it in sync if
+   * the donor goes back to step 1 and edits their name or amount. When the
+   * activity has a projectCode (currently only Trung Thu Vùng Cao 2026), the
+   * content is name + project code instead of the default name + date +
+   * amount format.
    */
   function handleSubmitStep1(e: FormEvent) {
     e.preventDefault();
@@ -113,7 +115,9 @@ export function DonateMoney() {
       return;
     }
 
-    setTransferContent(buildTransferContent(form.name, amountNumber, new Date()));
+    setTransferContent(
+      buildTransferContent(form.name, amountNumber, new Date(), donateMode!.projectCode),
+    );
     setQrFailed(false);
     setStep(2);
   }
