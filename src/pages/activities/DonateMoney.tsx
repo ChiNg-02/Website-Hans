@@ -4,8 +4,9 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import { getActivityBySlug } from "../../data/activities";
 import type { DonateMoneyMode } from "../../types/activity";
 import { CoverArt } from "../../components/CoverArt";
-import { generateDonationId, submitDonationRecord } from "../../lib/donationApi";
+import { submitDonationRecord } from "../../lib/donationApi";
 import { buildVietQrUrl } from "../../lib/vietqr";
+import { buildTransferContent } from "../../lib/transferContent";
 
 const inputClass =
   "rounded-xl border border-ink-200 px-3 py-2 text-sm outline-none transition focus:border-brand-400 focus:ring-2 focus:ring-brand-100";
@@ -82,7 +83,7 @@ export function DonateMoney() {
 
   const [step, setStep] = useState<1 | 2>(1);
   const [form, setForm] = useState<FormState>(initialForm);
-  const [donationId, setDonationId] = useState<string | null>(null);
+  const [transferContent, setTransferContent] = useState<string | null>(null);
   const [error, setError] = useState("");
   const [confirming, setConfirming] = useState(false);
   const [confirmError, setConfirmError] = useState("");
@@ -97,9 +98,12 @@ export function DonateMoney() {
 
   /**
    * Step 1 only validates and stashes the donor's input in state - it must
-   * never touch the network. The DONATE code is assigned locally so it can
-   * be shown as the transfer content in Step 2; the one and only API call
-   * for this donation happens later, in handleConfirm.
+   * never touch the network. The transfer content is built locally, from the
+   * donor's name, this exact moment's date and the amount, so it can be
+   * shown for the actual bank transfer in Step 2; the one and only API call
+   * for this donation happens later, in handleConfirm. Rebuilding it on every
+   * submit (rather than reusing a stashed value) keeps it in sync if the
+   * donor goes back to step 1 and edits their name or amount.
    */
   function handleSubmitStep1(e: FormEvent) {
     e.preventDefault();
@@ -109,9 +113,7 @@ export function DonateMoney() {
       return;
     }
 
-    // Reuse the existing code if the donor is coming back from step 2 -
-    // never assign a new one for the same pass through the form.
-    setDonationId((existing) => existing ?? generateDonationId());
+    setTransferContent(buildTransferContent(form.name, amountNumber, new Date()));
     setQrFailed(false);
     setStep(2);
   }
@@ -119,7 +121,7 @@ export function DonateMoney() {
   async function handleConfirm() {
     // Guards against duplicate submissions from a double click or the
     // button re-firing before its disabled state has re-rendered.
-    if (!donationId || confirming || confirmed) return;
+    if (!transferContent || confirming || confirmed) return;
     setConfirmError("");
     setConfirming(true);
     try {
@@ -131,7 +133,7 @@ export function DonateMoney() {
         amount: amountNumber,
         message: form.message.trim(),
         anonymous: form.anonymous,
-        transferCode: donationId,
+        transferCode: transferContent,
         createdAt: new Date().toISOString(),
         paymentConfirmed: true,
         confirmedAt: new Date().toISOString(),
@@ -144,13 +146,13 @@ export function DonateMoney() {
     }
   }
 
-  const qrUrl = donationId
+  const qrUrl = transferContent
     ? buildVietQrUrl(
         donateMode.bankName,
         donateMode.accountNumber,
         donateMode.accountHolder,
         amountNumber,
-        donationId,
+        transferContent,
       )
     : null;
 
@@ -260,7 +262,7 @@ export function DonateMoney() {
             </form>
           )}
 
-          {step === 2 && donationId && (
+          {step === 2 && transferContent && (
             <div className="flex flex-col items-center gap-5 text-center">
               {confirmed ? (
                 <>
@@ -272,8 +274,8 @@ export function DonateMoney() {
                       Cảm ơn tấm lòng của bạn!
                     </p>
                     <p className="mt-1 text-sm text-ink-500">
-                      HANS đã ghi nhận xác nhận chuyển khoản cho mã{" "}
-                      <span className="font-semibold text-ink-700">{donationId}</span>.
+                      HANS đã ghi nhận xác nhận chuyển khoản với nội dung{" "}
+                      <span className="font-semibold text-ink-700">{transferContent}</span>.
                     </p>
                   </div>
                   <Link
@@ -317,7 +319,7 @@ export function DonateMoney() {
                     />
                     <CopyField label="Số tài khoản" value={donateMode.accountNumber} />
                     <CopyField label="Chủ tài khoản" value={donateMode.accountHolder} />
-                    <CopyField label="Nội dung chuyển khoản" value={donationId} />
+                    <CopyField label="Nội dung chuyển khoản" value={transferContent} />
                   </div>
 
                   {donateMode.note && (

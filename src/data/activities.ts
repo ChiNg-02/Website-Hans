@@ -37,7 +37,6 @@ export const activities: Activity[] = [
         accountNumber: "0071000123456",
         accountHolder: "CLB THIEN NGUYEN HOI AM NHAN SINH",
         branch: "Chi nhánh Hà Nội",
-        note: "Toàn bộ kinh phí được dùng để mua lồng đèn, bánh kẹo và học bổng cho các em.",
       },
     ],
   },

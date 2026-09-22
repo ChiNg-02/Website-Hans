@@ -1,6 +1,8 @@
 export interface Achievement {
   issuer: string;
   description: string;
+  /** Path to a photo of the certificate/award. Falls back to a placeholder when omitted. */
+  image?: string;
 }
 
 export const achievements: Achievement[] = [

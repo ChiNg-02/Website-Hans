@@ -30,15 +30,3 @@ export async function submitDonationRecord(data: DonationRecord): Promise<void> 
     body: JSON.stringify(data),
   });
 }
-
-/**
- * Assigns the DONATE1, DONATE2, ... transfer code shown in Step 2. This must
- * not touch the network - Step 1 only collects and validates form input, it
- * never calls the API - so the code is a sequential, per-browser counter.
- */
-export function generateDonationId(): string {
-  const storageKey = "hans-donate-counter";
-  const nextNumber = Number(localStorage.getItem(storageKey) || "0") + 1;
-  localStorage.setItem(storageKey, String(nextNumber));
-  return `DONATE${nextNumber}`;
-}

@@ -35,7 +35,10 @@ export function TrungThuVungCao() {
               <h2 className="mt-3 font-display text-2xl font-extrabold sm:text-3xl">
                 Trung Thu Vùng Cao 2026
               </h2>
-              <p className="mt-1 max-w-md text-sm text-white/90 sm:text-base">
+              <p className="mt-1 font-display text-sm font-semibold italic text-white/95 sm:text-base">
+                "Tuổi thơ cho em, hạnh phúc cho ta"
+              </p>
+              <p className="mt-2 max-w-md text-sm text-white/90 sm:text-base">
                 Mùa trăng rằm thứ 8 đang được HANS chuẩn bị - cùng đồng hành để mang Trung Thu đến
                 với các em nhỏ vùng cao.
               </p>
