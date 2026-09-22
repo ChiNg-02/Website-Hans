@@ -36,19 +36,26 @@ export const featuredProjects: FeaturedProject[] = [
   {
     slug: "bep-an-thien-nguyen",
     title: "Bếp Ăn Thiện Nguyện",
-    countLabel: "79 lần tổ chức",
+    countLabel: "101 lần tổ chức",
     regions: ["Long Thành", "Biên Hòa", "Sài Gòn"],
-    hasDetail: false,
+    summary:
+      "\"Bếp Ăn Thiện Nguyện\" là nơi các thành viên HANS cùng đội ngũ tình nguyện viên tự tay chuẩn bị từng bữa ăn. Từ khâu chọn nguyên liệu đến khi nấu nướng, mỗi suất ăn đều được chăm chút cẩn thận. Những phần ăn nóng hổi này được trao trực tiếp đến bất kỳ ai đang gặp khó khăn với một mong muốn giản dị: san sẻ phần nào nỗi lo toan thường nhật bằng một bữa ăn ngon và tươm tất.",
+    hasDetail: true,
     inDashboard: true,
+    coverImage: "/featured/bep-an-thien-nguyen/2.jpg",
     coverGradient: ["#97dfb2", "#66cc8c"],
   },
   {
     slug: "tet-yeu-thuong",
     title: "Tết Yêu Thương",
-    countLabel: "4 lần tổ chức",
+    tagline: "Mang Tết đến với những mảnh đời đang cần",
+    countLabel: "Tổ chức thường niên",
     regions: ["Long Thành", "Biên Hòa", "Sài Gòn"],
+    summary:
+      "Được tổ chức thường niên tại ba điểm cầu Biên Hoà, Long Thành và Sài Gòn, dự án là hành trình mang Tết đến với những người già neo đơn, cô chú lao động nghèo và các em nhỏ khó khăn. Bằng những phần quà thiết thực (mì gói, dầu ăn...) kèm theo một phong bao nhỏ hỗ trợ sắm Tết, HANS hy vọng có thể san sẻ phần nào nỗi lo cơm áo ngày cuối năm, để ai cũng được đón một cái Tết đủ đầy.",
     hasDetail: false,
     inDashboard: true,
+    coverImage: "/t%E1%BA%BFt%20iu%20th%C6%B0%C6%A1ng/%E1%BA%A3nh%20b%C3%ACa/%E1%BA%A3nh%20b%C3%ACa%20t%E1%BA%BFt.jpg",
     coverGradient: ["#fce4df", "#de5a44"],
   },
   {
