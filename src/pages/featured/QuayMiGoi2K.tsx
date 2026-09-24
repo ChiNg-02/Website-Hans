@@ -29,7 +29,14 @@ export function QuayMiGoi2K() {
       />
 
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
-        <p className="mb-12 max-w-3xl leading-relaxed text-ink-600">{quayMiGoiInfo.organization}</p>
+        <p className="mb-12 max-w-3xl leading-relaxed text-ink-600">
+          "Quầy mì gói 2k" được HANS triển khai với mong muốn mang đến những bữa lót dạ nóng hổi
+          và thiết thực. Thay vì phát miễn phí đại trà, dự án chọn mức giá tượng trưng 2.000 đồng
+          để mỗi người ghé ăn đều cảm thấy thoải mái, tự nhiên như một khách hàng thực thụ. Dù
+          vậy, với những ai đang gặp khó khăn hoặc không có sẵn tiền, quầy luôn sẵn sàng gửi tặng
+          những phần ăn này hoàn toàn miễn phí. Bằng sự linh hoạt và chân thành, dự án hy vọng có
+          thể san sẻ phần nào nỗi lo cơm áo cho bất kỳ ai ghé thăm.
+        </p>
 
         <div className="mb-14 grid gap-4 sm:grid-cols-3">
           {FACTS.map((f) => (
