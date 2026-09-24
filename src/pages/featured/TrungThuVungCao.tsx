@@ -25,6 +25,15 @@ export function TrungThuVungCao() {
       />
 
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
+        <p className="mb-12 max-w-3xl text-base leading-relaxed text-ink-600">
+          Mỗi mùa trăng về, những chuyến xe của HANS lại lăn bánh, mang theo dự án "Trung Thu Vùng
+          Cao - Tuổi thơ cho em, hạnh phúc cho ta" ngược lên các bản làng xa xôi. Tại đây, dự án
+          mang đến những phần quà thiết thực cùng nhiều hoạt động vui chơi bổ ích ngay giữa không
+          gian sinh hoạt chung của bản. Thông qua những việc làm cụ thể này, HANS hy vọng san sẻ
+          phần nào khó khăn và tạo ra một sân chơi tuổi thơ đúng nghĩa cho các em trong ngày Tết
+          thiếu nhi.
+        </p>
+
         {/* Current 2026 campaign highlight */}
         <div className="mb-14 overflow-hidden rounded-3xl bg-gradient-to-br from-accent-500 to-accent-600 p-6 text-white shadow-lg sm:p-8">
           <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
