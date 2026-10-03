@@ -10,6 +10,7 @@ export const featuredProjects: FeaturedProject[] = [
       "7 mùa trăng rằm được HANS mang đến với trẻ em vùng cao, từ Đắk Nông, Kon Tum, Đồng Nai đến Đắk Lắk và Gia Lai.",
     hasDetail: true,
     inDashboard: true,
+    thumbnailImage: "/featured/thumbnails/trung-thu-vung-cao.jpg",
     coverGradient: ["#ffd9d4", "#3fb96d"],
   },
   {
@@ -21,6 +22,7 @@ export const featuredProjects: FeaturedProject[] = [
       "5 hành trình gieo hạt giống tri thức và yêu thương đến học sinh vùng cao tại Khánh Hòa và Đắk Nông.",
     hasDetail: true,
     inDashboard: true,
+    thumbnailImage: "/featured/thumbnails/hat-giong-vung-cao.jpg",
     coverGradient: ["#c3edd3", "#3fb96d"],
   },
   {
@@ -31,6 +33,7 @@ export const featuredProjects: FeaturedProject[] = [
       "Quầy ăn tự phục vụ 2.000đ mỗi ngày tại Long Thành, đồng hành cùng người lao động, học sinh, sinh viên khó khăn.",
     hasDetail: true,
     inDashboard: false,
+    thumbnailImage: "/featured/thumbnails/quay-mi-goi-2k.jpg",
     coverGradient: ["#f2a294", "#66cc8c"],
   },
   {
@@ -42,6 +45,7 @@ export const featuredProjects: FeaturedProject[] = [
       "\"Bếp Ăn Thiện Nguyện\" là nơi các thành viên HANS cùng đội ngũ tình nguyện viên tự tay chuẩn bị từng bữa ăn. Từ khâu chọn nguyên liệu đến khi nấu nướng, mỗi suất ăn đều được chăm chút cẩn thận. Những phần ăn nóng hổi này được trao trực tiếp đến bất kỳ ai đang gặp khó khăn với một mong muốn giản dị: san sẻ phần nào nỗi lo toan thường nhật bằng một bữa ăn ngon và tươm tất.",
     hasDetail: true,
     inDashboard: true,
+    thumbnailImage: "/featured/thumbnails/bep-an-thien-nguyen.jpg",
     coverImage: "/featured/bep-an-thien-nguyen/2.jpg",
     coverGradient: ["#97dfb2", "#66cc8c"],
   },
@@ -55,6 +59,7 @@ export const featuredProjects: FeaturedProject[] = [
       "Được tổ chức thường niên tại ba điểm cầu Biên Hoà, Long Thành và Sài Gòn, dự án là hành trình mang Tết đến với những người già neo đơn, cô chú lao động nghèo và các em nhỏ khó khăn. Bằng những phần quà thiết thực (mì gói, dầu ăn...) kèm theo một phong bao nhỏ hỗ trợ sắm Tết, HANS hy vọng có thể san sẻ phần nào nỗi lo cơm áo ngày cuối năm, để ai cũng được đón một cái Tết đủ đầy.",
     hasDetail: false,
     inDashboard: true,
+    thumbnailImage: "/featured/thumbnails/tet-yeu-thuong.jpg",
     coverImage: "/t%E1%BA%BFt%20iu%20th%C6%B0%C6%A1ng/%E1%BA%A3nh%20b%C3%ACa/%E1%BA%A3nh%20b%C3%ACa%20t%E1%BA%BFt.jpg",
     coverGradient: ["#fce4df", "#de5a44"],
   },
@@ -65,6 +70,7 @@ export const featuredProjects: FeaturedProject[] = [
     summary: "Trợ giúp bệnh hiểm nghèo, tai nạn, hoàn cảnh khó khăn.",
     hasDetail: false,
     inDashboard: true,
+    thumbnailImage: "/featured/thumbnails/truong-hop-kho-khan.jpg",
     coverGradient: ["#c3edd3", "#f2a294"],
   },
   {
@@ -74,6 +80,7 @@ export const featuredProjects: FeaturedProject[] = [
     subPrograms: ["Phiên chợ thực phẩm 0 đồng", "Chuyến xe yêu thương"],
     hasDetail: false,
     inDashboard: true,
+    thumbnailImage: "/featured/thumbnails/ung-pho-covid19.jpg",
     coverGradient: ["#97dfb2", "#3fb96d"],
   },
 ];

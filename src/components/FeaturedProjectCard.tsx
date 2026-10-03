@@ -8,7 +8,11 @@ export function FeaturedProjectCard({ project }: { project: FeaturedProject }) {
       to={`/du-an-noi-bat/${project.slug}`}
       className="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-ink-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:ring-brand-200"
     >
-      <CoverArt gradient={project.coverGradient} className="h-36 shrink-0">
+      <CoverArt
+        gradient={project.coverGradient}
+        image={project.thumbnailImage}
+        className="h-36 shrink-0"
+      >
         <div className="absolute inset-x-4 bottom-3">
           <span className="inline-flex items-center rounded-full bg-white/85 px-3 py-1 text-xs font-bold text-ink-800 backdrop-blur">
             {project.countLabel}
