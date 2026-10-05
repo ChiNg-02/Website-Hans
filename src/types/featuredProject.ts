@@ -24,6 +24,8 @@ export interface FeaturedProject {
   hasDetail: boolean;
   /** Shown in the "Dashboard tổng quan" highlight grid. */
   inDashboard: boolean;
+  /** Optional photo shown in the featured-project listing card. */
+  thumbnailImage?: string;
   /** Optional photo used as the detail-page cover instead of the gradient. */
   coverImage?: string;
   coverGradient: [string, string];
