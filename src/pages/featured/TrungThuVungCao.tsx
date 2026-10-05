@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import { FeaturedDetailHero } from "../../components/featured/FeaturedDetailHero";
 import { ProjectTimeline } from "../../components/featured/ProjectTimeline";
-import { PhotoGalleryTrio } from "../../components/featured/PhotoGallery";
+import { PhotoGalleryCarousel } from "../../components/featured/PhotoGallery";
 import { SectionHeading } from "../../components/SectionHeading";
 import { getFeaturedProjectBySlug, trungThuEditions } from "../../data/featuredProjects";
 
-const GALLERY = [
-  "/featured/trung-thu/1.jpg",
-  "/featured/trung-thu/3.jpg",
-  "/featured/trung-thu/4.jpg",
+const GALLERY_GROUPS = [
+  ["/featured/trung-thu/1.jpg", "/featured/trung-thu/3.jpg", "/featured/trung-thu/4.jpg"],
+  ["/featured/trung-thu/5.jpg", "/featured/trung-thu/6.jpg", "/featured/trung-thu/7.jpg"],
+  ["/featured/trung-thu/10.jpg", "/featured/trung-thu/9.jpg", "/featured/trung-thu/8.jpg"],
 ];
 
 export function TrungThuVungCao() {
@@ -75,7 +75,7 @@ export function TrungThuVungCao() {
           description="Nụ cười của các em nhỏ qua từng mùa trăng rằm HANS đã đi qua."
         />
         <div className="mb-14">
-          <PhotoGalleryTrio images={GALLERY} alt="Khoảnh khắc Trung Thu Vùng Cao" />
+          <PhotoGalleryCarousel groups={GALLERY_GROUPS} alt="Khoảnh khắc Trung Thu Vùng Cao" />
         </div>
 
         <SectionHeading
