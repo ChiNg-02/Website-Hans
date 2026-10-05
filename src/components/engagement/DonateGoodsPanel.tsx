@@ -42,14 +42,17 @@ export function DonateGoodsPanel({
         <p className="rounded-xl bg-ink-50 px-3 py-2 text-sm text-ink-600">{mode.guideline}</p>
       )}
 
-      {(mode.contactPerson || mode.contactPhone) && (
-        <p className="text-sm text-ink-500">
-          Liên hệ hỗ trợ:{" "}
-          <span className="font-semibold text-ink-700">
-            {mode.contactPerson}
-            {mode.contactPhone ? ` - ${mode.contactPhone}` : ""}
-          </span>
-        </p>
+      {mode.supportContacts && mode.supportContacts.length > 0 && (
+        <div className="text-sm text-ink-500">
+          <p className="mb-1 font-medium">Liên hệ hỗ trợ:</p>
+          <ul className="flex flex-col gap-1">
+            {mode.supportContacts.map((contact) => (
+              <li key={contact.phone} className="font-semibold text-ink-700">
+                {contact.name} - {contact.phone}
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );

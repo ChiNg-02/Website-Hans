@@ -28,8 +28,7 @@ export interface DonateGoodsMode {
   type: "donate_goods";
   acceptedItems: string[];
   dropOffLocations: string[];
-  contactPerson?: string;
-  contactPhone?: string;
+  supportContacts?: { name: string; phone: string }[];
   guideline?: string;
 }
 
@@ -42,6 +41,8 @@ export interface Activity {
   summary: string;
   description: string[];
   coverGradient: [string, string];
+  thumbnailImage?: string;
+  showDetailSummary?: boolean;
   status: ActivityStatus;
   featured?: boolean;
   startDate: string;
