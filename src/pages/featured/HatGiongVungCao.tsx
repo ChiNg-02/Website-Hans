@@ -1,13 +1,13 @@
 import { FeaturedDetailHero } from "../../components/featured/FeaturedDetailHero";
 import { ProjectTimeline } from "../../components/featured/ProjectTimeline";
-import { PhotoGalleryTrio } from "../../components/featured/PhotoGallery";
+import { PhotoGalleryCarousel } from "../../components/featured/PhotoGallery";
 import { SectionHeading } from "../../components/SectionHeading";
 import { getFeaturedProjectBySlug, hatGiongEditions } from "../../data/featuredProjects";
 
-const GALLERY = [
-  "/featured/hat-giong/1.jpg",
-  "/featured/hat-giong/3.jpg",
-  "/featured/hat-giong/4.jpg",
+const GALLERY_GROUPS = [
+  ["/featured/hat-giong/1.jpg", "/featured/hat-giong/3.jpg", "/featured/hat-giong/4.jpg"],
+  ["/featured/hat-giong/5.jpg", "/featured/hat-giong/6.jpg", "/featured/hat-giong/7.jpg"],
+  ["/featured/hat-giong/8.jpg", "/featured/hat-giong/9.jpg", "/featured/hat-giong/10.jpg"],
 ];
 
 export function HatGiongVungCao() {
@@ -43,7 +43,7 @@ export function HatGiongVungCao() {
           description="Những nụ cười và món quà nhỏ trên hành trình gieo hạt giống của HANS."
         />
         <div className="mb-14">
-          <PhotoGalleryTrio images={GALLERY} alt="Khoảnh khắc Hạt Giống Vùng Cao" />
+          <PhotoGalleryCarousel groups={GALLERY_GROUPS} alt="Khoảnh khắc Hạt Giống Vùng Cao" />
         </div>
 
         <SectionHeading
