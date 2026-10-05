@@ -11,9 +11,9 @@ export function FundReport() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
       <SectionHeading
-        eyebrow="Minh bạch"
-        title="Báo cáo quỹ"
-        description="Quét mã QR để xem báo cáo quỹ của HANS."
+        eyebrow="Kết nối"
+        title="Liên hệ"
+        description="Có câu hỏi, ý tưởng hợp tác hay đơn giản là muốn trò chuyện? Hãy gửi tin nhắn cho chúng mình."
       />
 
       <div className="grid gap-10 lg:grid-cols-5">
@@ -63,7 +63,8 @@ export function FundReport() {
           </div>
         </div>
 
-        <div className="flex items-center justify-center rounded-3xl bg-white p-6 shadow-sm ring-1 ring-ink-100 sm:p-8 lg:col-span-3">
+        <div className="flex flex-col items-center justify-center gap-4 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-ink-100 sm:p-8 lg:col-span-3">
+          <h2 className="font-display text-xl font-extrabold text-ink-900">Báo cáo quỹ</h2>
           <img
             src="/reports/fund-report-qr.png"
             alt="Mã QR xem báo cáo quỹ HANS"
