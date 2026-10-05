@@ -27,8 +27,17 @@ const NAV_LINKS: (NavLeaf | NavGroup)[] = [
   },
   { kind: "leaf", to: "/du-an-noi-bat", label: "Dự án/Hoạt động nổi bật" },
   { kind: "leaf", to: "/hoat-dong", label: "Đồng hành cùng HANS" },
-  { kind: "leaf", to: "/lien-he", label: "Liên hệ" },
+  { kind: "leaf", to: "/lien-he", label: "Liên hệ/ Báo cáo quỹ" },
 ];
+
+const MOBILE_NAV_LINKS: NavChild[] = NAV_LINKS.flatMap((link) =>
+  link.kind === "group"
+    ? link.children.map((child) => ({
+        to: child.to,
+        label: `${link.label} · ${child.label}`,
+      }))
+    : [{ to: link.to, label: link.label }],
+);
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -145,11 +154,7 @@ export function Header() {
             />
           </form>
           <div className="flex flex-col gap-1">
-            {NAV_LINKS.flatMap((link) =>
-              link.kind === "group"
-                ? link.children.map((c) => ({ to: c.to, label: `${link.label} · ${c.label}` }))
-                : [{ to: link.to, label: link.label }],
-            ).map((link) => (
+            {MOBILE_NAV_LINKS.map((link) => (
               <NavLink
                 key={link.to}
                 to={link.to}

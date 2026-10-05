@@ -12,7 +12,7 @@ import { HatGiongVungCao } from "./pages/featured/HatGiongVungCao";
 import { QuayMiGoi2K } from "./pages/featured/QuayMiGoi2K";
 import { BepAnThienNguyen } from "./pages/featured/BepAnThienNguyen";
 import { FeaturedComingSoon } from "./pages/featured/FeaturedComingSoon";
-import { Contact } from "./pages/Contact";
+import { FundReport } from "./pages/FundReport";
 import { Search } from "./pages/Search";
 import { NotFound } from "./pages/NotFound";
 
@@ -32,7 +32,8 @@ function App() {
         <Route path="hoat-dong" element={<ActivityListing />} />
         <Route path="hoat-dong/:slug" element={<ActivityDetail />} />
         <Route path="hoat-dong/:slug/ung-ho" element={<DonateMoney />} />
-        <Route path="lien-he" element={<Contact />} />
+        <Route path="lien-he" element={<FundReport />} />
+        <Route path="bao-cao-quy" element={<FundReport />} />
         <Route path="tim-kiem" element={<Search />} />
         <Route path="*" element={<NotFound />} />
       </Route>
