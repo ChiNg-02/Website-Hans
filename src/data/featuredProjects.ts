@@ -71,6 +71,7 @@ export const featuredProjects: FeaturedProject[] = [
     hasDetail: false,
     inDashboard: true,
     thumbnailImage: "/featured/thumbnails/truong-hop-kho-khan.jpg",
+    coverImage: "/featured/thumbnails/truong-hop-kho-khan.jpg",
     coverGradient: ["#c3edd3", "#f2a294"],
   },
   {
