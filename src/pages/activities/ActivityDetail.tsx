@@ -27,7 +27,11 @@ export function ActivityDetail() {
 
   return (
     <div>
-      <CoverArt gradient={activity.coverGradient} className="h-56 sm:h-72">
+      <CoverArt
+        gradient={activity.coverGradient}
+        image={activity.thumbnailImage}
+        className="h-56 sm:h-72"
+      >
         <div className="absolute inset-0 bg-gradient-to-t from-ink-900/40 to-transparent" />
         <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-end px-4 pb-6 sm:px-6">
           <div className="mb-3">
@@ -41,7 +45,9 @@ export function ActivityDetail() {
 
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-3">
         <div className="flex flex-col gap-6 lg:col-span-2">
-          <p className="text-lg leading-relaxed text-ink-600">{activity.summary}</p>
+          {activity.showDetailSummary !== false && (
+            <p className="text-lg leading-relaxed text-ink-600">{activity.summary}</p>
+          )}
           <div className="flex flex-col gap-4 text-ink-600">
             {activity.description.map((p, i) => (
               <p key={i} className="leading-relaxed">
