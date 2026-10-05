@@ -30,7 +30,7 @@ export function ActivityCard({ activity }: { activity: Activity }) {
           <span>📍</span>
           <span className="line-clamp-1">{activity.location}</span>
         </div>
-        {activity.engagementModes.length > 0 && (
+        {activity.status !== "past" && activity.engagementModes.length > 0 && (
           <div className="flex flex-wrap gap-2 pt-1">
             {activity.engagementModes.map((mode) => (
               <span

@@ -5,9 +5,9 @@ export const featuredProjects: FeaturedProject[] = [
     slug: "trung-thu-vung-cao",
     title: "Trung Thu Vùng Cao",
     tagline: "Tuổi thơ cho em, hạnh phúc cho ta",
-    countLabel: "7 lần tổ chức",
+    countLabel: "8 lần tổ chức",
     summary:
-      "7 mùa trăng rằm được HANS mang đến với trẻ em vùng cao, từ Đắk Nông, Kon Tum, Đồng Nai đến Đắk Lắk và Gia Lai.",
+      "8 mùa trăng rằm được HANS mang đến với trẻ em vùng cao, từ Đắk Nông, Kon Tum, Đồng Nai đến Đắk Lắk và Gia Lai.",
     hasDetail: true,
     inDashboard: true,
     thumbnailImage: "/featured/thumbnails/trung-thu-vung-cao.jpg",
@@ -130,6 +130,11 @@ export const trungThuEditions: ProjectEdition[] = [
     location: "Trường TH - THCS Đinh Núp, xã Pờ Tó, tỉnh Gia Lai",
     giftCount: "462 phần quà",
   },
+  {
+    label: "Lần 8",
+    location: "Làng Đắk - Kơpier, xã Krong, tỉnh Gia Lai",
+    giftCount: "386 phần quà",
+  },
 ];
 
 export const hatGiongEditions: ProjectEdition[] = [
@@ -169,7 +174,7 @@ export const quayMiGoiInfo = {
   organization:
     "CLB Thiện nguyện Hơi Ấm Nhân Sinh (trực thuộc Hội Liên hiệp Thanh niên Việt Nam huyện Long Thành)",
   startDate: "02/12/2024",
-  openingHours: "08:00 – 18:30 mỗi ngày",
+  openingHours: "08:00 - 18:30 mỗi ngày",
   location:
     "Tìm kiếm trên Google Maps theo tên \"CLB Thiện Nguyện Hơi Ấm Nhân Sinh\" (khu vực Long Thành, Đồng Nai)",
   format: [

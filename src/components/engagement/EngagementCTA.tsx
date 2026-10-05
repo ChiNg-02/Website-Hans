@@ -18,7 +18,7 @@ export function EngagementCTA({ activity }: { activity: Activity }) {
   const navigate = useNavigate();
   const [activeMode, setActiveMode] = useState<EngagementMode | null>(null);
 
-  if (activity.engagementModes.length === 0) {
+  if (activity.status === "past" || activity.engagementModes.length === 0) {
     return (
       <div className="rounded-2xl bg-ink-100 px-5 py-4 text-sm text-ink-500">
         Hoạt động này đã kết thúc. Cảm ơn tất cả các bạn đã đồng hành cùng HANS!

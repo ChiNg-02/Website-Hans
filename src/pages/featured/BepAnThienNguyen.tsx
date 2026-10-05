@@ -41,8 +41,6 @@ const LOCATIONS = [
   },
 ];
 
-const SHARED_QR = "/featured/bep-an-thien-nguyen/qr%20thu%20chi%203%20kvuc/qr%20thu%20chi.jpg";
-
 export function BepAnThienNguyen() {
   const project = getFeaturedProjectBySlug("bep-an-thien-nguyen")!;
 
@@ -92,16 +90,7 @@ export function BepAnThienNguyen() {
           ))}
         </div>
 
-        <section className="mt-14 rounded-3xl bg-white p-6 text-center shadow-sm ring-1 ring-ink-100 sm:p-8">
-          <SectionHeading
-            eyebrow="Minh bạch thu - chi"
-            title="QR thu - chi dùng chung cho 3 khu vực"
-            description="Quét mã để theo dõi các khoản đóng góp và chi phí của Bếp Thiện Nguyện."
-            align="center"
-            compact
-          />
-          <img src={SHARED_QR} alt="QR thu - chi Bếp Thiện Nguyện" className="mx-auto mt-6 h-64 w-64 object-contain" />
-        </section>
+
 
       </div>
     </div>

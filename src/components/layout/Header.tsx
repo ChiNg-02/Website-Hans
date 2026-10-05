@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 
 interface NavChild {
   to: string;
@@ -13,6 +13,8 @@ interface NavLeaf extends NavChild {
 interface NavGroup {
   kind: "group";
   label: string;
+  /** Path prefixes that belong to this group, for highlighting the parent item. */
+  activePrefixes: string[];
   children: NavChild[];
 }
 
@@ -20,14 +22,15 @@ const NAV_LINKS: (NavLeaf | NavGroup)[] = [
   {
     kind: "group",
     label: "Về HANS",
+    activePrefixes: ["/ve-hans", "/du-an-noi-bat"],
     children: [
       { to: "/ve-hans/gioi-thieu", label: "Giới thiệu" },
       { to: "/ve-hans/thanh-tich", label: "Thành tích khen thưởng" },
     ],
   },
-  { kind: "leaf", to: "/du-an-noi-bat", label: "Dự án/Hoạt động nổi bật" },
+  { kind: "leaf", to: "/tin-tuc", label: "Tin tức" },
   { kind: "leaf", to: "/hoat-dong", label: "Đồng hành cùng HANS" },
-  { kind: "leaf", to: "/lien-he", label: "Liên hệ/ Báo cáo quỹ" },
+  { kind: "leaf", to: "/lien-he", label: "Liên hệ" },
 ];
 
 const MOBILE_NAV_LINKS: NavChild[] = NAV_LINKS.flatMap((link) =>
@@ -43,6 +46,7 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     setMobileOpen(false);
@@ -74,11 +78,18 @@ export function Header() {
           {NAV_LINKS.map((link) =>
             link.kind === "group" ? (
               <div key={link.label} className="group relative">
-                <button className="flex items-center gap-1 rounded-full px-3 py-2 text-sm font-bold text-ink-700 transition hover:bg-brand-50 hover:text-brand-700">
+                <button
+                  type="button"
+                  className={`flex items-center gap-1 rounded-full px-3 py-2 text-sm font-bold transition hover:bg-brand-50 hover:text-brand-700 ${
+                    link.activePrefixes.some((p) => pathname.startsWith(p))
+                      ? "bg-brand-50 text-brand-700"
+                      : "text-ink-700"
+                  }`}
+                >
                   {link.label}
                   <span className="text-xs">▾</span>
                 </button>
-                <div className="invisible absolute left-0 top-full pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100">
+                <div className="invisible absolute left-0 top-full pt-2 opacity-0 transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
                   <div className="flex w-56 flex-col gap-1 rounded-2xl bg-white p-2 shadow-lg ring-1 ring-ink-100">
                     {link.children.map((child) => (
                       <NavLink
@@ -104,7 +115,7 @@ export function Header() {
                 to={link.to}
                 className={({ isActive }) =>
                   `rounded-full px-3 py-2 text-sm font-bold transition ${
-                    isActive && link.to === "/hoat-dong"
+                    isActive
                       ? "bg-brand-50 text-brand-700"
                       : "text-ink-700 hover:bg-brand-50 hover:text-brand-700"
                   }`
@@ -159,7 +170,11 @@ export function Header() {
                 key={link.to}
                 to={link.to}
                 onClick={() => setMobileOpen(false)}
-                className="rounded-xl px-3 py-2.5 text-sm font-medium text-ink-600 hover:bg-brand-50 hover:text-brand-700"
+                className={({ isActive }) =>
+                  `rounded-xl px-3 py-2.5 text-sm font-medium hover:bg-brand-50 hover:text-brand-700 ${
+                    isActive ? "bg-brand-50 text-brand-700" : "text-ink-600"
+                  }`
+                }
               >
                 {link.label}
               </NavLink>

@@ -1,4 +1,7 @@
 import { SectionHeading } from "../../components/SectionHeading";
+import { FeaturedProjectCard } from "../../components/FeaturedProjectCard";
+import { FeaturedDashboard } from "../../components/featured/FeaturedDashboard";
+import { featuredProjects, getDashboardHighlights } from "../../data/featuredProjects";
 
 const REGIONS = ["Long Thành", "Biên Hòa", "Sài Gòn"];
 
@@ -105,9 +108,11 @@ function OrgCard({
 }
 
 export function Introduction() {
+  const highlights = getDashboardHighlights();
+
   return (
     <div>
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+      <div className="mx-auto max-w-6xl px-4 pb-16 pt-14 sm:px-6">
         <SectionHeading
           eyebrow="Về HANS"
           title="Giới thiệu CLB Hơi Ấm Nhân Sinh"
@@ -115,7 +120,7 @@ export function Introduction() {
         />
 
         {/* Ra đời từ năm 2019 */}
-        <div className="mb-20 grid gap-10 md:grid-cols-2 md:items-center md:gap-14">
+        <div className="mb-16 grid gap-10 md:grid-cols-2 md:items-center md:gap-14">
           <div className="relative">
             <div className="overflow-hidden rounded-[2rem] shadow-lg ring-1 ring-ink-100">
               <img
@@ -146,7 +151,7 @@ export function Introduction() {
         </div>
 
         {/* Khu vực hoạt động */}
-        <div className="mb-20">
+        <div>
           <h3 className="mb-6 font-display text-xl font-bold text-ink-900 sm:text-2xl">
             Khu vực hoạt động
           </h3>
@@ -164,26 +169,52 @@ export function Introduction() {
             ))}
           </div>
         </div>
+      </div>
 
-        {/* Cơ cấu tổ chức */}
-        <div>
+      {/* Dự án/Hoạt động nổi bật: dashboard tổng quan + giới thiệu từng dự án */}
+      <section id="du-an-noi-bat" className="scroll-mt-20">
+        <FeaturedDashboard projects={highlights}>
           <SectionHeading
-            eyebrow="Đội ngũ HANS"
-            title="Cơ cấu tổ chức"
-            description="Những người đồng hành cùng HANS trong hành trình lan tỏa sự tử tế."
+            eyebrow="🌟 Dự án/Hoạt động nổi bật"
+            title="Hành trình những dự án mang dấu ấn của HANS"
+            description="Mỗi con số dưới đây là một hành trình bền bỉ - nơi những chuyến đi, bữa ăn và món quà nhỏ đã cùng nhau viết nên câu chuyện thiện nguyện của HANS."
+            align="center"
+            tone="light"
           />
+        </FeaturedDashboard>
 
-          <div className="rounded-[2rem] bg-white p-6 shadow-sm ring-1 ring-ink-100 sm:p-10">
-            <div className="mx-auto w-full max-w-xs">
-              <OrgCard member={LEADER} tone="leader" />
-            </div>
-            <OrgConnector />
-            <OrgRow members={MANAGEMENT} tone="management" />
-            <OrgConnector />
-            <OrgRow members={SUPPORT} tone="support" />
+        <div className="mx-auto max-w-6xl px-4 pt-14 sm:px-6">
+          <SectionHeading
+            eyebrow="Khám phá"
+            title="Danh sách hoạt động"
+            description="Chọn một dự án để tìm hiểu hành trình và những dấu ấn đã đạt được."
+          />
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredProjects.map((p) => (
+              <FeaturedProjectCard key={p.slug} project={p} />
+            ))}
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Cơ cấu tổ chức */}
+      <section id="co-cau-to-chuc" className="mx-auto max-w-6xl scroll-mt-20 px-4 pt-16 sm:px-6">
+        <SectionHeading
+          eyebrow="Đội ngũ HANS"
+          title="Cơ cấu tổ chức"
+          description="Những người đồng hành cùng HANS trong hành trình lan tỏa sự tử tế."
+        />
+
+        <div className="rounded-[2rem] bg-white p-6 shadow-sm ring-1 ring-ink-100 sm:p-10">
+          <div className="mx-auto w-full max-w-xs">
+            <OrgCard member={LEADER} tone="leader" />
+          </div>
+          <OrgConnector />
+          <OrgRow members={MANAGEMENT} tone="management" />
+          <OrgConnector />
+          <OrgRow members={SUPPORT} tone="support" />
+        </div>
+      </section>
     </div>
   );
 }

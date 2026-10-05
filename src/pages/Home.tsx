@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { SectionHeading } from "../components/SectionHeading";
 import { ActivityCard } from "../components/ActivityCard";
 import { Carousel } from "../components/Carousel";
+import { NewsCard } from "../components/news/NewsCard";
 import { useInView } from "../lib/useInView";
 import { getFeaturedActivities } from "../data/activities";
+import { getLatestNews } from "../data/news";
 import { homeStats, homeStatsPeriod } from "../data/stats";
 import type { StatItem } from "../data/stats";
 import { achievements } from "../data/achievements";
@@ -89,6 +91,7 @@ export function Home() {
   const upcoming = featured.filter((a) => a.status === "upcoming");
   const [activityTab, setActivityTab] = useState<"ongoing" | "upcoming">("ongoing");
   const activeList = activityTab === "ongoing" ? ongoing : upcoming;
+  const latestNews = getLatestNews(3);
 
   return (
     <div>
@@ -129,6 +132,34 @@ export function Home() {
             </Link>
           </div>
         </div>
+      </section>
+
+      {/* Tin tức */}
+      <section className="mx-auto max-w-6xl px-4 pt-16 sm:px-6">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <SectionHeading
+            eyebrow="Mới cập nhật"
+            title="Tin tức"
+            description="Câu chuyện mới nhất từ những hành trình của HANS."
+          />
+          <Link
+            to="/tin-tuc"
+            className="mb-10 text-sm font-semibold text-brand-600 hover:text-brand-700"
+          >
+            Xem tất cả tin tức →
+          </Link>
+        </div>
+        {latestNews.length === 0 ? (
+          <p className="rounded-2xl bg-white p-6 text-sm text-ink-400 ring-1 ring-ink-100">
+            Chưa có bài viết nào.
+          </p>
+        ) : (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {latestNews.map((article) => (
+              <NewsCard key={article.slug} article={article} />
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Hoạt động sắp/đang diễn ra */}
@@ -196,7 +227,7 @@ export function Home() {
           <SectionHeading
             eyebrow="Dấu ấn"
             title="Những dấu ấn đáng tự hào"
-            description="Những ghi nhận từ các cấp Đoàn – Hội dành cho hành trình thiện nguyện của HANS."
+            description="Những ghi nhận từ các cấp Đoàn - Hội dành cho hành trình thiện nguyện của HANS."
           />
           <Link
             to="/ve-hans/thanh-tich"

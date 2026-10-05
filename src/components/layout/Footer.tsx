@@ -45,8 +45,9 @@ export function Footer() {
           <ul className="flex flex-col gap-2 text-sm text-ink-500">
             <li><Link to="/ve-hans/gioi-thieu" className="hover:text-brand-600">Giới thiệu</Link></li>
             <li><Link to="/ve-hans/thanh-tich" className="hover:text-brand-600">Thành tích khen thưởng</Link></li>
-            <li><Link to="/hoat-dong" className="hover:text-brand-600">Danh sách hoạt động</Link></li>
-            <li><Link to="/lien-he" className="hover:text-brand-600">Liên hệ</Link></li>
+            <li><Link to="/tin-tuc" className="hover:text-brand-600">Tin tức</Link></li>
+            <li><Link to="/hoat-dong" className="hover:text-brand-600">Đồng hành cùng HANS</Link></li>
+            <li><Link to="/lien-he" className="hover:text-brand-600">Liên hệ & Báo cáo quỹ</Link></li>
           </ul>
         </div>
         <div>

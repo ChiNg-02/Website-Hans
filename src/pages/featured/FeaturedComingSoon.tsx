@@ -120,7 +120,7 @@ export function FeaturedComingSoon() {
   const project = slug ? getFeaturedProjectBySlug(slug) : undefined;
 
   if (!project) {
-    return <Navigate to="/du-an-noi-bat" replace />;
+    return <Navigate to="/ve-hans/gioi-thieu#du-an-noi-bat" replace />;
   }
 
   const isTetYeuThuong = slug === "tet-yeu-thuong";

@@ -16,7 +16,7 @@ export function FeaturedDetailHero({ title, tagline, countLabel, gradient, image
       <div className="absolute inset-0 bg-gradient-to-t from-ink-900/75 via-ink-900/30 to-ink-900/10" />
       <div className="relative mx-auto flex h-full max-w-5xl flex-col justify-end px-4 pb-8 sm:px-6">
         <Link
-          to="/du-an-noi-bat"
+          to="/ve-hans/gioi-thieu#du-an-noi-bat"
           className="mb-3 inline-flex w-fit items-center gap-1 text-xs font-semibold text-white/90 hover:text-white"
         >
           ← Dự án/Hoạt động nổi bật
