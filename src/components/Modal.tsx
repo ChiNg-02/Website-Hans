@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import type { ReactNode } from "react";
+import { createPortal } from "react-dom";
 
 interface ModalProps {
   open: boolean;
@@ -23,7 +24,7 @@ export function Modal({ open, onClose, title, icon, children }: ModalProps) {
 
   if (!open) return null;
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-50 flex items-end justify-center p-0 sm:items-center sm:p-4">
       <div
         className="absolute inset-0 bg-ink-900/50 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out]"
@@ -48,6 +49,7 @@ export function Modal({ open, onClose, title, icon, children }: ModalProps) {
       <style>{`
         @keyframes slideUp { from { opacity: 0; transform: translateY(16px) } to { opacity: 1; transform: translateY(0) } }
       `}</style>
-    </div>
+    </div>,
+    document.body,
   );
 }
