@@ -1,4 +1,4 @@
-import bepComTruaCover from "../../thumbnail/Bếp thiện nguyện.jpg";
+import bepComTruaCover from "../../thumbnail/bep-thien-nguyen.jpg";
 import type { NewsArticle, NewsImage } from "../types/news";
 
 const TTVC_2026_DIR = "/news/tuoi-tho-cho-em-08-2026";
