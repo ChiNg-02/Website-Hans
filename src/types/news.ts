@@ -22,7 +22,7 @@ export type NewsBlock =
   | NewsInlineBlock
   /** Opening paragraphs, set larger with a drop cap. */
   | { kind: "lead"; paragraphs: string[] }
-  | { kind: "heading"; text: string; eyebrow?: string }
+  | { kind: "heading"; text: string; eyebrow?: string; style?: "default" | "centered-divider" }
   | { kind: "image"; image: NewsImage; size?: "wide" | "compact" }
   | {
       kind: "split";
@@ -32,7 +32,12 @@ export type NewsBlock =
       /** "compact" keeps small source images small instead of upscaling them. */
       imageSize?: "default" | "compact";
     }
-  | { kind: "gallery"; images: NewsImage[] }
+  | {
+      kind: "gallery";
+      images: NewsImage[];
+      size?: "default" | "compact";
+      layout?: "justified" | "uniform";
+    }
   | { kind: "stats"; eyebrow?: string; heading: string; items: NewsStat[]; backgroundImage?: string };
 
 export interface NewsCta {
