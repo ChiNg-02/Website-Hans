@@ -142,17 +142,45 @@ function JustifiedRow({ images }: { images: NewsImage[] }) {
   );
 }
 
-function Gallery({ images }: { images: NewsImage[] }) {
+function Gallery({
+  images,
+  size = "default",
+  layout = "justified",
+}: {
+  images: NewsImage[];
+  size?: "default" | "compact";
+  layout?: "justified" | "uniform";
+}) {
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
-      <div className="hidden md:block">
-        <JustifiedRow images={images} />
-      </div>
-      <div className="flex flex-col gap-2 md:hidden">
-        {mobileRows(images).map((row) => (
-          <JustifiedRow key={row[0].src} images={row} />
-        ))}
-      </div>
+    <div className={`mx-auto w-full ${size === "compact" ? "max-w-3xl" : "max-w-6xl"} px-4 sm:px-6`}>
+      {layout === "uniform" ? (
+        <div className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4">
+          {images.map((image) => (
+            <figure
+              key={image.src}
+              className="aspect-[3/4] overflow-hidden rounded-2xl bg-ink-100 shadow-sm ring-1 ring-ink-100"
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                loading="lazy"
+                className="h-full w-full object-cover transition duration-500 hover:scale-[1.03]"
+              />
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <>
+          <div className="hidden md:block">
+            <JustifiedRow images={images} />
+          </div>
+          <div className="flex flex-col gap-2 md:hidden">
+            {mobileRows(images).map((row) => (
+              <JustifiedRow key={row[0].src} images={row} />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -231,15 +259,25 @@ function Block({ block }: { block: NewsBlock }) {
     case "heading":
       return (
         <div className={`${WIDE_COLUMN} mt-10 sm:mt-14`}>
-          <div className="flex max-w-3xl flex-col items-start gap-3">
-            <span className="h-1 w-12 rounded-full bg-brand-500" />
-            {block.eyebrow && (
-              <span className="text-xs font-bold uppercase tracking-wide text-brand-600">{block.eyebrow}</span>
-            )}
-            <h2 className="font-display text-2xl font-extrabold leading-tight text-ink-900 sm:text-3xl">
-              {block.text}
-            </h2>
-          </div>
+          {block.style === "centered-divider" ? (
+            <div className="flex max-w-5xl items-center justify-center gap-4 text-center">
+              <span aria-hidden="true" className="h-1 w-12 shrink-0 rounded-full bg-brand-500" />
+              <h2 className="font-display text-2xl font-extrabold leading-tight text-ink-900 sm:text-3xl">
+                {block.text}
+              </h2>
+              <span aria-hidden="true" className="h-1 w-12 shrink-0 rounded-full bg-brand-500" />
+            </div>
+          ) : (
+            <div className="flex max-w-3xl flex-col items-start gap-3">
+              <span className="h-1 w-12 rounded-full bg-brand-500" />
+              {block.eyebrow && (
+                <span className="text-xs font-bold uppercase tracking-wide text-brand-600">{block.eyebrow}</span>
+              )}
+              <h2 className="font-display text-2xl font-extrabold leading-tight text-ink-900 sm:text-3xl">
+                {block.text}
+              </h2>
+            </div>
+          )}
         </div>
       );
     case "image":
@@ -251,7 +289,7 @@ function Block({ block }: { block: NewsBlock }) {
     case "split":
       return <Split block={block} />;
     case "gallery":
-      return <Gallery images={block.images} />;
+      return <Gallery images={block.images} size={block.size} layout={block.layout} />;
     case "stats":
       return <Stats block={block} />;
     default:
