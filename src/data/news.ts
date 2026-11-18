@@ -1,4 +1,5 @@
 import bepComTruaCover from "../../thumbnail/bep-thien-nguyen.jpg";
+import { toArticle } from "../lib/newsValidation";
 import type { NewsArticle, NewsImage } from "../types/news";
 
 const TTVC_2026_DIR = "/news/tuoi-tho-cho-em-08-2026";
@@ -96,7 +97,8 @@ const ttvc2026 = {
   },
 } satisfies Record<string, NewsImage>;
 
-export const newsArticles: NewsArticle[] = [
+/** Bài viết tay (biên tập trực tiếp trong code). Luôn được ưu tiên khi trùng slug. */
+const handWrittenNews: NewsArticle[] = [
   {
     slug: "bep-com-trua-2-nghin-10-2026",
     title: "Bếp Cơm Trưa 2 Nghìn – Nhìn lại 5 ngày gửi trao những bữa cơm ấm áp",
@@ -372,11 +374,53 @@ export const newsArticles: NewsArticle[] = [
   },
 ];
 
+/**
+ * Bài đăng tự động (n8n): mỗi bài là một file src/data/news-posts/<slug>.json.
+ * Vite gom các file này lúc build, nên thêm file mới là đủ - không cần sửa code.
+ */
+const autoPostFiles = import.meta.glob("./news-posts/*.json", {
+  eager: true,
+  import: "default",
+});
+
+function loadAutoPosts(takenSlugs: Set<string>): NewsArticle[] {
+  const posts: NewsArticle[] = [];
+  const files = Object.entries(autoPostFiles).sort(([a], [b]) => a.localeCompare(b));
+
+  for (const [path, data] of files) {
+    const fileSlug = path.slice(path.lastIndexOf("/") + 1, -".json".length);
+    const article = toArticle(data);
+
+    let problem: string | null = null;
+    if (!article) problem = "sai cấu trúc NewsArticle";
+    else if (article.slug !== fileSlug) problem = `slug "${article.slug}" không khớp tên file`;
+    else if (takenSlugs.has(article.slug)) problem = "trùng slug với bài đã có - giữ bài cũ";
+
+    if (problem || !article) {
+      if (import.meta.env.DEV) console.warn(`[news] Bỏ qua ${path}: ${problem}`);
+      continue;
+    }
+    takenSlugs.add(article.slug);
+    posts.push(article);
+  }
+  return posts;
+}
+
+/** Mới nhất lên trước; bài không có ngày đứng sau. Sort ổn định nên bài cùng ngày giữ thứ tự cũ. */
+const byNewest = (a: NewsArticle, b: NewsArticle) =>
+  (b.publishedAt ?? "").localeCompare(a.publishedAt ?? "");
+
+/** Nguồn dữ liệu duy nhất cho Trang chủ, Tin tức và trang chi tiết. */
+export const newsArticles: NewsArticle[] = [
+  ...handWrittenNews,
+  ...loadAutoPosts(new Set(handWrittenNews.map((a) => a.slug))),
+].sort(byNewest);
+
 export function getNewsBySlug(slug: string) {
   return newsArticles.find((article) => article.slug === slug);
 }
 
-/** Newest first. Articles are listed in `newsArticles` newest-first, so this is the array order. */
+/** Newest first (see `newsArticles`). */
 export function getLatestNews(limit?: number) {
   return limit === undefined ? newsArticles : newsArticles.slice(0, limit);
 }
