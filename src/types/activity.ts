@@ -84,6 +84,8 @@ export interface Activity {
    */
   displayUntil?: string;
   location: string;
+  /** Planned amount shown in the detail info box, e.g. "200 phần ăn". */
+  expectedQuantity?: string;
   tags: string[];
   gallery?: { caption: string; gradient: [string, string] }[];
   stats?: { label: string; value: string }[];

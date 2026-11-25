@@ -26,8 +26,8 @@ export const activities: Activity[] = [
     // Call for support closes, and the activity leaves the lists, 6 hours before the event.
     displayUntil: "2026-11-29T10:00:00+07:00",
     location: "Bệnh viện Đa khoa Đồng Nai",
+    expectedQuantity: "200 phần ăn",
     tags: ["Bếp ăn", "Biên Hòa"],
-    stats: [{ label: "phần ăn", value: "200" }],
     engagementModes: [
       {
         type: "donate_money",

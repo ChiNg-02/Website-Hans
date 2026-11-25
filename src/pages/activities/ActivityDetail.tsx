@@ -111,6 +111,12 @@ export function ActivityDetail() {
                 <dt className="text-ink-400">Địa điểm</dt>
                 <dd className="text-right font-medium text-ink-700">{activity.location}</dd>
               </div>
+              {activity.expectedQuantity && (
+                <div className="flex justify-between gap-4">
+                  <dt className="shrink-0 text-ink-400">Số lượng dự kiến</dt>
+                  <dd className="text-right font-medium text-ink-700">{activity.expectedQuantity}</dd>
+                </div>
+              )}
             </dl>
           </div>
 
