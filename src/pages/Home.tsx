@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { SectionHeading } from "../components/SectionHeading";
 import { ActivityCard } from "../components/ActivityCard";
 import { Carousel } from "../components/Carousel";
 import { NewsCard } from "../components/news/NewsCard";
 import { useInView } from "../lib/useInView";
+import { useListedActivities } from "../lib/useListedActivities";
 import { getFeaturedActivities } from "../data/activities";
 import { getLatestNews } from "../data/news";
 import { homeStats, homeStatsPeriod } from "../data/stats";
@@ -86,7 +87,9 @@ function AchievementSlide({ achievement, index }: { achievement: Achievement; in
 }
 
 export function Home() {
-  const featured = getFeaturedActivities();
+  const allFeatured = useMemo(() => getFeaturedActivities(), []);
+  // Drops activities past their displayUntil, live, without a reload.
+  const featured = useListedActivities(allFeatured);
   const ongoing = featured.filter((a) => a.status === "ongoing");
   const upcoming = featured.filter((a) => a.status === "upcoming");
   const [activityTab, setActivityTab] = useState<"ongoing" | "upcoming">("ongoing");

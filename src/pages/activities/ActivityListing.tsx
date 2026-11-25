@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { SectionHeading } from "../../components/SectionHeading";
 import { ActivityCard } from "../../components/ActivityCard";
 import { activities } from "../../data/activities";
+import { useListedActivities } from "../../lib/useListedActivities";
 import type { ActivityStatus } from "../../types/activity";
 
 type FilterKey = "all" | "featured" | ActivityStatus;
@@ -19,11 +20,13 @@ export function ActivityListing() {
     FILTERS.some((f) => f.key === filterParam) ? filterParam : "ongoing",
   );
 
-  const filtered = useMemo(() => {
+  const byFilter = useMemo(() => {
     if (filter === "all") return activities;
     if (filter === "featured") return activities.filter((a) => a.featured);
     return activities.filter((a) => a.status === filter);
   }, [filter]);
+  // Drops activities past their displayUntil, live, without a reload.
+  const filtered = useListedActivities(byFilter);
 
   function selectFilter(key: FilterKey) {
     setFilter(key);

@@ -2,6 +2,40 @@ import type { Activity } from "../types/activity";
 
 export const activities: Activity[] = [
   {
+    id: "bep-thien-nguyen-bien-hoa-ky-30",
+    slug: "bep-thien-nguyen-bien-hoa-ky-30",
+    title: "Bếp Thiện Nguyện Biên Hòa – Kỳ 30",
+    summary:
+      "Dự kiến trao tặng 200 phần cháo gà xé, sữa đậu nành và trái cây đến bệnh nhân và người nhà tại Bệnh viện Đa khoa Đồng Nai.",
+    showDetailSummary: false,
+    description: [
+      "Tiếp nối hành trình lan tỏa yêu thương, CLB Hơi Ấm Nhân Sinh tổ chức chương trình Bếp Thiện Nguyện Biên Hòa – Kỳ 30, dự kiến trao tặng 200 phần ăn gồm cháo gà xé, sữa đậu nành và trái cây đến các bệnh nhân và người nhà tại Bệnh viện Đa khoa Đồng Nai.",
+      "Mỗi phần ăn không chỉ mang đến một bữa ăn ấm lòng mà còn gửi gắm sự quan tâm, sẻ chia và động viên đến những hoàn cảnh đang cần được tiếp thêm sức mạnh.",
+    ],
+    // Pastel accent tones so the letterboxed poster blends into the card.
+    coverGradient: ["#fce4df", "#f2a294"],
+    thumbnailImage: "/activities/bep-thien-nguyen-bien-hoa-ky-30.png",
+    thumbnailAlt:
+      "Poster Bếp Thiện Nguyện Biên Hòa – Kỳ 30: 200 phần cháo gà xé, sữa đậu nành và trái cây, 16h00 Chủ nhật ngày 29 tháng 11 tại Bệnh viện Đa khoa Đồng Nai",
+    thumbnailFit: "contain",
+    // "Đang diễn ra" = the call for support is open; the event itself is 29/11 at 16h00.
+    status: "ongoing",
+    featured: true,
+    startDate: "2026-11-29",
+    startTime: "16h00",
+    // Call for support closes, and the activity leaves the lists, 6 hours before the event.
+    displayUntil: "2026-11-29T10:00:00+07:00",
+    location: "Bệnh viện Đa khoa Đồng Nai",
+    tags: ["Bếp ăn", "Biên Hòa"],
+    stats: [{ label: "phần ăn", value: "200" }],
+    engagementModes: [
+      {
+        type: "donate_money",
+        externalSupportUrl: "https://www.facebook.com/share/p/1EFSfL5a4y/",
+      },
+    ],
+  },
+  {
     id: "trung-thu-vung-cao-2026",
     slug: "trung-thu-vung-cao-2026",
     title: "Trung Thu Vùng Cao 2026",

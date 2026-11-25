@@ -78,7 +78,7 @@ export function DonateMoney() {
   const { slug } = useParams<{ slug: string }>();
   const activity = slug ? getActivityBySlug(slug) : undefined;
   const donateMode = activity?.engagementModes.find(
-    (m): m is DonateMoneyMode => m.type === "donate_money",
+    (m): m is DonateMoneyMode => m.type === "donate_money" && !m.externalSupportUrl,
   );
 
   const [step, setStep] = useState<1 | 2>(1);

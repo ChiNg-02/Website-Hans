@@ -13,6 +13,8 @@ export function ActivityCard({ activity }: { activity: Activity }) {
       <CoverArt
         gradient={activity.coverGradient}
         image={activity.thumbnailImage}
+        imageAlt={activity.thumbnailAlt}
+        imageFit={activity.thumbnailFit}
         className="h-40 shrink-0"
       >
         <div className="absolute left-4 top-4">

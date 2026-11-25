@@ -13,6 +13,13 @@ function formatDate(date?: string) {
   });
 }
 
+const WEEKDAYS = ["Chủ nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"];
+
+/** Weekday of a YYYY-MM-DD date, independent of the viewer's timezone. */
+function weekday(date: string) {
+  return WEEKDAYS[new Date(`${date}T00:00:00Z`).getUTCDay()];
+}
+
 export function ActivityDetail() {
   const { slug } = useParams<{ slug: string }>();
   const activity = slug ? getActivityBySlug(slug) : undefined;
@@ -21,15 +28,22 @@ export function ActivityDetail() {
     return <Navigate to="/hoat-dong" replace />;
   }
 
-  const dateRange = activity.endDate
-    ? `${formatDate(activity.startDate)} - ${formatDate(activity.endDate)}`
-    : formatDate(activity.startDate);
+  const dateRange = !activity.startDate
+    ? "Đang cập nhật"
+    : activity.endDate
+      ? `${formatDate(activity.startDate)} - ${formatDate(activity.endDate)}`
+      : activity.startTime
+        ? `${activity.startTime}, ${weekday(activity.startDate)}, ${formatDate(activity.startDate)}`
+        : formatDate(activity.startDate);
+  // A poster can't sit behind the title without its text clashing - show it
+  // in full in the content column instead and keep the header a gradient.
+  const showPoster = activity.thumbnailFit === "contain" && !!activity.thumbnailImage;
 
   return (
     <div>
       <CoverArt
         gradient={activity.coverGradient}
-        image={activity.thumbnailImage}
+        image={showPoster ? undefined : activity.thumbnailImage}
         className="h-56 sm:h-72"
       >
         <div className="absolute inset-0 bg-gradient-to-t from-ink-900/40 to-transparent" />
@@ -45,6 +59,13 @@ export function ActivityDetail() {
 
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-3">
         <div className="flex flex-col gap-6 lg:col-span-2">
+          {showPoster && (
+            <img
+              src={activity.thumbnailImage}
+              alt={activity.thumbnailAlt ?? activity.title}
+              className="h-auto w-full max-w-xl rounded-2xl shadow-sm ring-1 ring-ink-100"
+            />
+          )}
           {activity.showDetailSummary !== false && (
             <p className="text-lg leading-relaxed text-ink-600">{activity.summary}</p>
           )}

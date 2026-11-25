@@ -13,6 +13,9 @@ import { DonateGoodsPanel } from "./DonateGoodsPanel";
  *
  * "donate_money" is the one mode that opens a full page instead of a modal -
  * it's a multi-step flow (donor info → payment) that needs its own URL.
+ * When that mode declares an `externalSupportUrl`, the CTA is instead a plain
+ * link to the club's official post, opened in a new tab - the website never
+ * shows bank details or handles money for it.
  */
 export function EngagementCTA({ activity }: { activity: Activity }) {
   const navigate = useNavigate();
@@ -34,20 +37,48 @@ export function EngagementCTA({ activity }: { activity: Activity }) {
     setActiveMode(mode);
   }
 
+  const hasExternalSupport = activity.engagementModes.some(
+    (m) => m.type === "donate_money" && m.externalSupportUrl,
+  );
+
   return (
     <>
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-        {activity.engagementModes.map((mode) => (
-          <button
-            key={mode.type}
-            onClick={() => handleClick(mode)}
-            className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold uppercase tracking-wide shadow-sm transition ${ENGAGEMENT_STYLE[mode.type]}`}
-          >
-            <span>{ENGAGEMENT_ICON[mode.type]}</span>
-            {labelForMode(mode, activity.engagementModes)}
-          </button>
-        ))}
+        {activity.engagementModes.map((mode) => {
+          const className = `inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold uppercase tracking-wide shadow-sm transition ${ENGAGEMENT_STYLE[mode.type]}`;
+          const content = (
+            <>
+              <span>{ENGAGEMENT_ICON[mode.type]}</span>
+              {labelForMode(mode, activity.engagementModes)}
+            </>
+          );
+
+          if (mode.type === "donate_money" && mode.externalSupportUrl) {
+            return (
+              <a
+                key={mode.type}
+                href={mode.externalSupportUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={className}
+              >
+                {content}
+              </a>
+            );
+          }
+
+          return (
+            <button key={mode.type} onClick={() => handleClick(mode)} className={className}>
+              {content}
+            </button>
+          );
+        })}
       </div>
+      {hasExternalSupport && (
+        <p className="mt-3 text-xs leading-relaxed text-ink-500">
+          Xem thông tin và cách thức ủng hộ tại bài viết chính thức của CLB.
+        </p>
+      )}
 
       <Modal
         open={activeMode !== null}
