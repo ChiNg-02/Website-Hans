@@ -1,0 +1,72 @@
+{
+  "slug": "bep-thien-nguyen-bien-hoa-trao-200-suat-an-tai-benh-vien-da-1y08a8k",
+  "title": "Bếp Thiện Nguyện Biên Hòa trao 200 suất ăn tại Bệnh viện Đa khoa Đồng Nai",
+  "excerpt": "Bếp Thiện Nguyện Biên Hòa vừa tổ chức hoạt động trao tặng 200 suất ăn miễn phí cho các bệnh nhân và thân nhân tại Bệnh viện Đa khoa Đồng Nai. Hoạt động này nhằm chia sẻ khó khăn và…",
+  "category": "Tin hoạt động",
+  "publishedAt": "2026-11-25",
+  "cover": {
+    "src": "https://lh3.googleusercontent.com/d/1KkGQZ3aSvH9P_RXWMm5-L9-W4RCI0yZ4",
+    "alt": "Bếp Thiện Nguyện Biên Hòa trao 200 suất ăn tại Bệnh viện Đa khoa Đồng Nai",
+    "width": 1600,
+    "height": 1200
+  },
+  "blocks": [
+    {
+      "kind": "lead",
+      "paragraphs": [
+        "Bếp Thiện Nguyện Biên Hòa vừa tổ chức hoạt động trao tặng 200 suất ăn miễn phí cho các bệnh nhân và thân nhân tại Bệnh viện Đa khoa Đồng Nai. Hoạt động này nhằm chia sẻ khó khăn và tiếp thêm động lực cho những người đang điều trị hoặc chăm sóc người thân tại bệnh viện.",
+        "Trong đợt thiện nguyện này, nhóm đã chuẩn bị và trao tận tay 200 phần bún thịt xào đến bà con. Dù giá trị mỗi phần ăn không lớn, nhưng đây là tấm lòng của các thành viên với hy vọng giúp người bệnh và gia đình vơi đi một phần lo toan trong những ngày khó khăn."
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "text": "Để buổi trao tặng diễn ra thuận lợi, Bếp Thiện Nguyện Biên Hòa đã nhận được sự đóng góp và hỗ trợ nhiệt tình từ các mạnh thường quân cùng các thành viên trong nhóm. Sự chung tay này là nguồn lực quan trọng giúp bếp duy trì các hoạt động ý nghĩa và lan tỏa tinh thần tử tế trong cộng đồng."
+    },
+    {
+      "kind": "paragraph",
+      "text": "Chương trình kết thúc trong không khí ấm áp và nhận được sự đón nhận tích cực từ bà con. Trong thời gian tới, nhóm dự kiến sẽ tiếp tục hành trình thiện nguyện để hỗ trợ thêm nhiều hoàn cảnh khó khăn khác trong cuộc sống."
+    },
+    {
+      "kind": "heading",
+      "text": "Hình ảnh hoạt động"
+    },
+    {
+      "kind": "gallery",
+      "layout": "uniform",
+      "images": [
+        {
+          "src": "https://lh3.googleusercontent.com/d/1HRAG-8coizm-oORcESXKaMH9QNg4n-8j",
+          "alt": "Bếp Thiện Nguyện Biên Hòa trao 200 suất ăn tại Bệnh viện Đa khoa Đồng Nai - ảnh 2",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "src": "https://lh3.googleusercontent.com/d/1tZRJCdXv_zXXYTGdMdOpewC3OYLw4aS2",
+          "alt": "Bếp Thiện Nguyện Biên Hòa trao 200 suất ăn tại Bệnh viện Đa khoa Đồng Nai - ảnh 3",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "src": "https://lh3.googleusercontent.com/d/1-q2lUndx--vfdEXnTwuxFOvJoypHLuXu",
+          "alt": "Bếp Thiện Nguyện Biên Hòa trao 200 suất ăn tại Bệnh viện Đa khoa Đồng Nai - ảnh 4",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "src": "https://lh3.googleusercontent.com/d/1FsbwGqLI1EaX663MJfx0RCel5k751Ffo",
+          "alt": "Bếp Thiện Nguyện Biên Hòa trao 200 suất ăn tại Bệnh viện Đa khoa Đồng Nai - ảnh 5",
+          "width": 1200,
+          "height": 1600
+        }
+      ]
+    }
+  ],
+  "ctas": [
+    {
+      "label": "Xem bài viết gốc trên Facebook",
+      "href": "https://www.facebook.com/share/p/19pxBJFw44/",
+      "variant": "primary"
+    }
+  ],
+  "sourceId": "1y08a8k"
+}
